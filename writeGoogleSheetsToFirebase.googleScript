@@ -1,0 +1,33 @@
+function writeDataToFirebase() {
+  var ss = SpreadsheetApp.openById("1Qrgw91Vod2bPmH1OlDMBqGJG2DF5XGZnIGz_Lc_9PvQ");
+  var sheet = ss.getSheets()[0];
+  var data = sheet.getDataRange().getValues();
+  var dataToImport = {};
+  
+  for(var i = 2; i < data.length; i++) {
+    var programName = data[i][0];
+    dataToImport[programName] = {
+      programName:programName,
+      url:data[i][1],
+      email:data[i][2],
+      free:data[i][3],
+      cost:data[i][4],      
+      location:data[i][4],
+      courseLength:data[i][6],
+      technologies:data[i][7],
+      graduatesNumber:data[i][8],
+      yearEstablished:data[i][9],
+      employmentAssistance:data[i][10],
+      acceptenceReason:data[i][11],
+      stipend:data[i][12],
+      gradRate:data[i][13],
+      employmentRate:data[i][14],
+      physical:data[i][15],
+      businessType:data[i][16],
+    };
+  }
+  
+  var firebaseUrl = "https://southafricacodeschool.firebaseio.com/";
+  var base = FirebaseApp.getDatabaseByUrl(firebaseUrl);
+  base.setData("", dataToImport);
+}

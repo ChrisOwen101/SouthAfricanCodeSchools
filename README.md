@@ -2,6 +2,10 @@
 
 This project is an attempt to detail all of the programs available in South Africa that will help people learn how to code.
 
+## Live Website
+
+https://southafricacodeschool.firebaseapp.com
+
 ## How to run
 
 First pull the repository:

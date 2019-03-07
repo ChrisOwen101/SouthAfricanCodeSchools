@@ -1,8 +1,11 @@
 import React from "react";
+import SimpleAppBar from "./AppBar";
+import SchoolTable from "./SchoolTable";
 
 const App = () => (
   <div>
-    <h1>App</h1>
+    <SimpleAppBar />
+    <SchoolTable />
   </div>
 );
 

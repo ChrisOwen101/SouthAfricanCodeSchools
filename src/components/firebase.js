@@ -1,5 +1,4 @@
-import app from "firebase/app";
-import "firebase/database";
+import firebase from "firebase";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -10,16 +9,5 @@ const config = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
 
-class Firebase {
-  constructor() {
-    app.initializeApp(config);
-
-    this.db = app.database();
-
-    // *** User API ***
-
-    this.schools = () => this.db.ref("southafricacodeschool");
-  }
-}
-
-export default Firebase;
+var fire = firebase.initializeApp(config);
+export default fire;

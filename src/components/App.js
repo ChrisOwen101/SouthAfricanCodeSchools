@@ -1,6 +1,6 @@
 import React from "react";
 import SimpleAppBar from "./AppBar";
-import SchoolTable from "./SchoolTable";
+import SchoolTable from "./SchoolTableNew";
 
 const App = () => (
   <div>

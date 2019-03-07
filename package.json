@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "@react-firebase/database": "^0.3.10",
     "firebase": "^5.8.5",
+    "mui-datatables": "^2.0.0-beta.57",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8"

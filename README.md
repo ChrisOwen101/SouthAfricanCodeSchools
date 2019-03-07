@@ -16,6 +16,8 @@ Run:
 npm update && npm start
 ```
 
+## How to deploy
+
 To build:
 
 ```

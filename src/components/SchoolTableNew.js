@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 import fire from "./firebase";
 import Checkbox from "@material-ui/core/Checkbox";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 import MUIDataTable from "mui-datatables";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  root: {
+    justifyContent: "center",
+    flexWrap: "wrap"
+  },
+  paper: {
+    padding: `5px 10px`
+  }
+});
 
 const columns = [
   {
@@ -87,14 +100,6 @@ const columns = [
     }
   },
   {
-    name: "physical",
-    label: "Physical Location",
-    options: {
-      filter: true,
-      sort: false
-    }
-  },
-  {
     name: "stipend",
     label: "Stipend",
     options: {
@@ -153,4 +158,4 @@ class SchoolTable extends Component {
   }
 }
 
-export default SchoolTable;
+export default withStyles(styles)(SchoolTable);

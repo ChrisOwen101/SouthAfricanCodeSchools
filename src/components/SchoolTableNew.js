@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import fire from "./firebase";
 import Checkbox from "@material-ui/core/Checkbox";
-
 import MUIDataTable from "mui-datatables";
 
 const columns = [
@@ -13,13 +12,25 @@ const columns = [
       sort: true,
       sortDirection: "asc",
       customBodyRender: (value, tableMeta, updateValue) => {
-        console.log(tableMeta.rowData);
         return (
-          <a href={tableMeta.rowData} target="_blank" rel="noopener noreferrer">
+          <a
+            href={tableMeta.rowData[1]}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {value}
           </a>
         );
       }
+    }
+  },
+  {
+    name: "url",
+    label: "URL",
+    options: {
+      filter: false,
+      sort: false,
+      display: "excluded"
     }
   },
   {
@@ -41,7 +52,7 @@ const columns = [
     name: "location",
     label: "Location",
     options: {
-      filter: false,
+      filter: true,
       sort: false
     }
   },
@@ -52,7 +63,6 @@ const columns = [
       filter: true,
       sort: false,
       customBodyRender: (value, tableMeta, updateValue) => {
-        console.log(value);
         return <Checkbox disabled checked={value} />;
       }
     }
@@ -62,7 +72,10 @@ const columns = [
     label: "Cost",
     options: {
       filter: false,
-      sort: true
+      sort: true,
+      customBodyRender: (value, tableMeta, updateValue) => {
+        return value === 0 ? "-" : value;
+      }
     }
   },
   {
@@ -91,11 +104,6 @@ const columns = [
   }
 ];
 
-const options = {
-  pagination: false,
-  selectableRows: false
-};
-
 class SchoolTable extends Component {
   constructor(props) {
     super(props);
@@ -122,6 +130,19 @@ class SchoolTable extends Component {
   }
 
   render() {
+    const options = {
+      pagination: false,
+      selectableRows: false,
+      expandableRows: true,
+      renderExpandableRow: (rowData, rowMeta) => {
+        return (
+          <div>
+            <p>{this.state.schools[rowMeta.dataIndex].programName}</p>
+          </div>
+        );
+      }
+    };
+
     return (
       <MUIDataTable
         data={this.state.schools}

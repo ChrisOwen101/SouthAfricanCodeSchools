@@ -8,7 +8,7 @@ The website is running live here: https://southafricacodeschool.firebaseapp.com
 
 The data is stored in this Google Sheets: https://docs.google.com/spreadsheets/d/1Qrgw91Vod2bPmH1OlDMBqGJG2DF5XGZnIGz_Lc_9PvQ/edit#gid=0
 
-All data is pushed from the Google Sheet to a Firebase Realtime Database and changes are reflected within 1-2 seconds.
+All data is pushed from the Google Sheet to a Firebase Realtime Database on every change. The changes are reflected on the website within 1-2 seconds.
 
 ## How to run
 

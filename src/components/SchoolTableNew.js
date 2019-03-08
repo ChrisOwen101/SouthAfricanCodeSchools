@@ -18,7 +18,7 @@ const styles = theme => ({
 
 const columns = [
   {
-    name: "programName",
+    name: "name",
     label: "Name",
     options: {
       filter: false,
@@ -38,8 +38,8 @@ const columns = [
     }
   },
   {
-    name: "url",
-    label: "URL",
+    name: "website",
+    label: "Website",
     options: {
       filter: false,
       sort: false,
@@ -62,8 +62,8 @@ const columns = [
     }
   },
   {
-    name: "location",
-    label: "Location",
+    name: "locations",
+    label: "Locations",
     options: {
       filter: true,
       sort: false

@@ -6,28 +6,27 @@ function writeDataToFirebase() {
   
   for(var i = 2; i < data.length; i++) {
     var programName = data[i][0];
-    dataToImport[programName] = {
-      programName:programName,
-      url:data[i][1],
-      email:data[i][2],
-      free:data[i][3],
-      cost:data[i][4],      
-      location:data[i][4],
-      courseLength:data[i][6],
-      technologies:data[i][7],
-      graduatesNumber:data[i][8],
-      yearEstablished:data[i][9],
-      employmentAssistance:data[i][10],
-      acceptenceReason:data[i][11],
-      stipend:data[i][12],
-      gradRate:data[i][13],
-      employmentRate:data[i][14],
-      physical:data[i][15],
-      businessType:data[i][16],
-    };
+    dataToImport[programName] = {};
+
+    for(var y = 0; y < 16; y++) {
+      var columnName = toTitleCase(data[1][y])
+                         .replace(/\s/g, '');
+      columnName = decapitalizeFirstLetter(columnName)
+      dataToImport[programName][columnName] = data[i][y];
+    }
   }
   
   var firebaseUrl = "https://southafricacodeschool.firebaseio.com/";
   var base = FirebaseApp.getDatabaseByUrl(firebaseUrl);
   base.setData("", dataToImport);
+}
+
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
+
+function decapitalizeFirstLetter(string) {
+    return string.charAt(0).toLowerCase() + string.slice(1);
 }

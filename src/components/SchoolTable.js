@@ -42,8 +42,13 @@ const columns = [
       filter: false,
       sort: false,
       customBodyRender: (value, tableMeta, updateValue) => {
+        let email = value
+          .split(",")[0]
+          .trim()
+          .toLowerCase();
+
         return (
-          <a href={value} target="_blank" rel="noopener noreferrer">
+          <a href={"mailto:" + email} target="_blank" rel="noopener noreferrer">
             Contact
           </a>
         );

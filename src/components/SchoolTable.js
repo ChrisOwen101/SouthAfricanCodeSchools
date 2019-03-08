@@ -4,6 +4,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import MUIDataTable from "mui-datatables";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
+import Loader from "./Loader";
 
 const columns = [
   {
@@ -106,7 +107,7 @@ const columns = [
 class SchoolTable extends Component {
   constructor(props) {
     super(props);
-    this.state = { schools: [] };
+    this.state = { schools: [], isLoading: true };
   }
 
   componentWillMount() {
@@ -124,7 +125,7 @@ class SchoolTable extends Component {
         list.push(school.val());
       });
 
-      that.setState({ schools: list });
+      that.setState({ schools: list, isLoading: false });
     });
   }
 
@@ -133,6 +134,13 @@ class SchoolTable extends Component {
       pagination: false,
       selectableRows: false,
       expandableRows: true,
+      textLabels: {
+        body: {
+            noMatch: this.state.isLoading ?
+                <Loader/> :
+                'Sorry, there is no matching data to display',
+        },
+      },
       renderExpandableRow: (rowData, rowMeta) => {
         const colSpan = rowData.length + 1;
         return (

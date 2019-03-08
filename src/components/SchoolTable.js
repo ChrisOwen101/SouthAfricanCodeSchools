@@ -1,30 +1,116 @@
 import React, { Component } from "react";
 import fire from "./firebase";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+import Checkbox from "@material-ui/core/Checkbox";
 import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import MUIDataTable from "mui-datatables";
+import { withStyles } from "@material-ui/core/styles";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
 
 const styles = theme => ({
-  root: {
-    width: "100%",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
-  },
-  table: {
-    minWidth: 700
+  paper: {
+    padding: `5px 10px`
   }
 });
+
+const columns = [
+  {
+    name: "name",
+    label: "Name",
+    options: {
+      filter: false,
+      sort: true,
+      sortDirection: "asc",
+      customBodyRender: (value, tableMeta, updateValue) => {
+        return (
+          <a
+            href={tableMeta.rowData[1]}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {value}
+          </a>
+        );
+      }
+    }
+  },
+  {
+    name: "website",
+    label: "Website",
+    options: {
+      filter: false,
+      sort: false,
+      display: "excluded"
+    }
+  },
+  {
+    name: "email",
+    label: "Email",
+    options: {
+      filter: false,
+      sort: false,
+      customBodyRender: (value, tableMeta, updateValue) => {
+        return (
+          <a href={value} target="_blank" rel="noopener noreferrer">
+            Contact
+          </a>
+        );
+      }
+    }
+  },
+  {
+    name: "locations",
+    label: "Locations",
+    options: {
+      filter: true,
+      sort: false
+    }
+  },
+  {
+    name: "free",
+    label: "Free",
+    options: {
+      filter: true,
+      sort: false,
+      customBodyRender: (value, tableMeta, updateValue) => {
+        return <Checkbox disabled checked={value} />;
+      }
+    }
+  },
+  {
+    name: "cost",
+    label: "Cost",
+    options: {
+      filter: false,
+      sort: true,
+      customBodyRender: (value, tableMeta, updateValue) => {
+        return value === 0 ? "-" : value;
+      }
+    }
+  },
+  {
+    name: "courseLength",
+    label: "Course Length (Months)",
+    options: {
+      filter: false,
+      sort: true
+    }
+  },
+  {
+    name: "stipend",
+    label: "Stipend",
+    options: {
+      filter: true,
+      sort: false
+    }
+  }
+];
 
 class SchoolTable extends Component {
   constructor(props) {
     super(props);
     this.state = { schools: [] };
-    this.classes = props;
   }
 
   componentWillMount() {
@@ -36,7 +122,7 @@ class SchoolTable extends Component {
 
     var that = this;
 
-    messagesRef.once("value").then(function(snapshot) {
+    messagesRef.on("value", function(snapshot) {
       let list = [];
       snapshot.forEach(function(school) {
         list.push(school.val());
@@ -47,41 +133,28 @@ class SchoolTable extends Component {
   }
 
   render() {
+    const options = {
+      pagination: false,
+      selectableRows: false,
+      expandableRows: true,
+      renderExpandableRow: (rowData, rowMeta) => {
+        const colSpan = rowData.length + 1;
+        return (
+          <TableRow>
+            <TableCell colSpan={colSpan}>
+              {this.state.schools[rowMeta.dataIndex].programName}
+            </TableCell>
+          </TableRow>
+        );
+      }
+    };
+
     return (
-      <Paper className={this.classes.root}>
-        <Table className={this.classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>School Name</TableCell>
-              <TableCell align="right">Website</TableCell>
-              <TableCell align="right">Email</TableCell>
-              <TableCell align="right">Free</TableCell>
-              <TableCell align="right">Cost</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.state.schools.map(school => (
-              <TableRow key={school.id}>
-                <TableCell component="th" scope="row">
-                  {school.programName}
-                </TableCell>
-                <TableCell align="right">
-                  <a
-                    href={school.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {school.url}
-                  </a>
-                </TableCell>
-                <TableCell align="right">{school.email}</TableCell>
-                <TableCell align="right">{school.free}</TableCell>
-                <TableCell align="right">{school.cost}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Paper>
+      <MUIDataTable
+        data={this.state.schools}
+        columns={columns}
+        options={options}
+      />
     );
   }
 }

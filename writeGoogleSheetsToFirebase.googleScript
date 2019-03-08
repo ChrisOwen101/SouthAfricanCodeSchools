@@ -8,7 +8,7 @@ function writeDataToFirebase() {
     var programName = data[i][0];
     dataToImport[programName] = {};
 
-    for(var y = 0; y < 16; y++) {
+    for(var y = 0; y < 21; y++) {
       var columnName = toTitleCase(data[1][y])
                          .replace(/\s/g, '');
       columnName = decapitalizeFirstLetter(columnName)

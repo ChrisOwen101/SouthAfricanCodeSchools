@@ -25,3 +25,9 @@ a {
 a:visited {
   color: #487C2F;
 }
+
+#footer {
+  width: 100%;
+  text-align: center;
+  padding: 25px;
+}

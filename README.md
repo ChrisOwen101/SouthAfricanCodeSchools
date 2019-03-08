@@ -1,10 +1,10 @@
 # South African Code Schools
 
-This project is an attempt to detail all of the programs available in South Africa that will help people learn how to code.
+This project lists known programs available in South Africa that teach coding.
 
 ## Live Website
 
-The website is running live here: https://southafricacodeschool.firebaseapp.com
+The website is running live here: https://codeschooldirectory.co.za
 
 The data is stored in this Google Sheets: https://docs.google.com/spreadsheets/d/1Qrgw91Vod2bPmH1OlDMBqGJG2DF5XGZnIGz_Lc_9PvQ/edit#gid=0
 

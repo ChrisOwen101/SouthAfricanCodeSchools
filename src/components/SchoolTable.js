@@ -1,18 +1,9 @@
 import React, { Component } from "react";
 import fire from "./firebase";
 import Checkbox from "@material-ui/core/Checkbox";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
 import MUIDataTable from "mui-datatables";
-import { withStyles } from "@material-ui/core/styles";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-
-const styles = theme => ({
-  paper: {
-    padding: `5px 10px`
-  }
-});
 
 const columns = [
   {
@@ -149,14 +140,21 @@ class SchoolTable extends Component {
       }
     };
 
+    const style = {
+      padding: "20px"
+    };
+
     return (
-      <MUIDataTable
-        data={this.state.schools}
-        columns={columns}
-        options={options}
-      />
+      <div style={style}>
+        <MUIDataTable
+          style={style}
+          data={this.state.schools}
+          columns={columns}
+          options={options}
+        />
+      </div>
     );
   }
 }
 
-export default withStyles(styles)(SchoolTable);
+export default SchoolTable;

@@ -12,3 +12,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#logo img {
+  width: 200px;
+  padding: 15px;
+}
+
+a {
+  color: #295712;
+}
+
+a:visited {
+  color: #487C2F;
+}

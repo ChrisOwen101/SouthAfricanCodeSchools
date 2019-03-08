@@ -37,26 +37,6 @@ const columns = [
     }
   },
   {
-    name: "email",
-    label: "Email",
-    options: {
-      filter: false,
-      sort: false,
-      customBodyRender: (value, tableMeta, updateValue) => {
-        let email = value
-          .split(",")[0]
-          .trim()
-          .toLowerCase();
-
-        return (
-          <a href={"mailto:" + email} target="_blank" rel="noopener noreferrer">
-            Contact
-          </a>
-        );
-      }
-    }
-  },
-  {
     name: "locations",
     label: "Locations",
     options: {
@@ -95,11 +75,20 @@ const columns = [
     }
   },
   {
+    name: "accreditation",
+    label: "Accreditation",
+    options: {
+      filter: true,
+      sort: true
+    }
+  },
+  {
     name: "stipend",
     label: "Stipend",
     options: {
       filter: true,
-      sort: false
+      sort: false,
+      display: false
     }
   }
 ];

@@ -7,9 +7,13 @@ class SideBar extends Component {
   }
 
   render() {
+    const style = {
+      padding: "16px"
+    };
+
     return (
       <div>
-        <Paper>
+        <Paper style={style}>
           <p>Hello</p>
         </Paper>
       </div>

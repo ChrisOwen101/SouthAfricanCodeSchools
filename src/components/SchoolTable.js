@@ -138,7 +138,7 @@ class SchoolTable extends Component {
     };
 
     const style = {
-      padding: "20px"
+      margin: "16px"
     };
 
     return (

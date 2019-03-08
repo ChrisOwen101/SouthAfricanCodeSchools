@@ -4,6 +4,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import MUIDataTable from "mui-datatables";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
+import EmailCell from "./tablecells/EmailCell";
 
 const columns = [
   {
@@ -42,16 +43,7 @@ const columns = [
       filter: false,
       sort: false,
       customBodyRender: (value, tableMeta, updateValue) => {
-        let email = value
-          .split(",")[0]
-          .trim()
-          .toLowerCase();
-
-        return (
-          <a href={"mailto:" + email} target="_blank" rel="noopener noreferrer">
-            Contact
-          </a>
-        );
+        return <EmailCell email={value} />;
       }
     }
   },

@@ -4,7 +4,6 @@ import Paper from "@material-ui/core/Paper";
 class SideBar extends Component {
   constructor(props) {
     super(props);
-    this.state = { schools: [] };
   }
 
   render() {

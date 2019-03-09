@@ -2,7 +2,7 @@
 
 This project lists known programs available in South Africa that teach coding.
 
-This is a [Codebridge](https://codebridge.org.za/) community website. All organisation is completed on the [ZATech Slack](https://zatech.github.io/) workspace on the channel [#codeschooldirectory](https://zatech.slack.com/messages/CGT76NYK1/). Join and say hi!
+This is a [Codebridge](https://codebridge.org.za/) community website. All organisation is conducted on the [ZATech](https://zatech.github.io/) slack workspace on the channel [#codeschooldirectory](https://zatech.slack.com/messages/CGT76NYK1/). Join and say hi!
 
 ## Live Website
 

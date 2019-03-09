@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import fire from "./firebase";
 import Checkbox from "@material-ui/core/Checkbox";
 import MUIDataTable from "mui-datatables";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
-import EmailCell from "./tablecells/EmailCell";
 import Loader from "./Loader";
+import SchoolPopUp from "./SchoolPopUp";
 
 const columns = [
   {
@@ -97,7 +95,12 @@ const columns = [
 class SchoolTable extends Component {
   constructor(props) {
     super(props);
-    this.state = { schools: [], isLoading: true };
+    this.state = {
+      schools: [],
+      isLoading: true,
+      popUpOpen: false,
+      selectedSchool: {}
+    };
   }
 
   componentWillMount() {
@@ -119,11 +122,15 @@ class SchoolTable extends Component {
     });
   }
 
+  onPopUpClose = event => {
+    this.setState({ popUpOpen: false });
+  };
+
   render() {
     const options = {
       pagination: false,
       selectableRows: false,
-      expandableRows: true,
+      expandableRows: false,
       textLabels: {
         body: {
           noMatch: this.state.isLoading ? (
@@ -133,15 +140,11 @@ class SchoolTable extends Component {
           )
         }
       },
-      renderExpandableRow: (rowData, rowMeta) => {
-        const colSpan = rowData.length + 1;
-        return (
-          <TableRow>
-            <TableCell colSpan={colSpan}>
-              {this.state.schools[rowMeta.dataIndex].programName}
-            </TableCell>
-          </TableRow>
-        );
+      onRowClick: (rowData, rowMeta) => {
+        this.setState({
+          popUpOpen: true,
+          selectedSchool: this.state.schools[rowMeta.dataIndex]
+        });
       }
     };
 
@@ -156,6 +159,11 @@ class SchoolTable extends Component {
           data={this.state.schools}
           columns={columns}
           options={options}
+        />
+        <SchoolPopUp
+          open={this.state.popUpOpen}
+          school={this.state.selectedSchool}
+          onClose={this.onPopUpClose}
         />
       </div>
     );

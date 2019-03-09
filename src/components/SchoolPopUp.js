@@ -13,14 +13,6 @@ class SchoolPopUp extends Component {
     maxWidth: "sm"
   };
 
-  handleMaxWidthChange = event => {
-    this.setState({ maxWidth: event.target.value });
-  };
-
-  handleFullWidthChange = event => {
-    this.setState({ fullWidth: event.target.checked });
-  };
-
   handleClose = event => {
     this.props.onClose();
   };
@@ -35,9 +27,7 @@ class SchoolPopUp extends Component {
         open={this.props.open}
         aria-labelledby="max-width-dialog-title"
       >
-        <DialogTitle id="max-width-dialog-title">
-          {this.props.school.name}
-        </DialogTitle>
+        <DialogTitle>{this.props.school.name}</DialogTitle>
         <DialogContent>
           <DialogContentText>
             <EmailCell email={this.props.school.email} />

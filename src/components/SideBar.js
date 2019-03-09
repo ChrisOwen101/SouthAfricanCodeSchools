@@ -8,12 +8,13 @@ class SideBar extends Component {
 
   render() {
     const style = {
-      padding: "16px"
+      padding: "0px 4px px 0px",
+      margin: "16px 0px 0px 0px"
     };
 
     return (
       <div>
-        <Paper style={style}>
+        <Paper style={style} elevation={1}>
           <p>Hello</p>
         </Paper>
       </div>

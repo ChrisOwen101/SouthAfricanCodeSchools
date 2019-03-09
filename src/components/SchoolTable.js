@@ -5,6 +5,7 @@ import MUIDataTable from "mui-datatables";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import EmailCell from "./tablecells/EmailCell";
+import Loader from "./Loader";
 
 const columns = [
   {
@@ -34,17 +35,6 @@ const columns = [
       filter: false,
       sort: false,
       display: "excluded"
-    }
-  },
-  {
-    name: "email",
-    label: "Email",
-    options: {
-      filter: false,
-      sort: false,
-      customBodyRender: (value, tableMeta, updateValue) => {
-        return <EmailCell email={value} />;
-      }
     }
   },
   {
@@ -86,11 +76,20 @@ const columns = [
     }
   },
   {
+    name: "accreditation",
+    label: "Accreditation",
+    options: {
+      filter: true,
+      sort: true
+    }
+  },
+  {
     name: "stipend",
     label: "Stipend",
     options: {
       filter: true,
-      sort: false
+      sort: false,
+      display: false
     }
   }
 ];
@@ -98,7 +97,7 @@ const columns = [
 class SchoolTable extends Component {
   constructor(props) {
     super(props);
-    this.state = { schools: [] };
+    this.state = { schools: [], isLoading: true };
   }
 
   componentWillMount() {
@@ -116,7 +115,7 @@ class SchoolTable extends Component {
         list.push(school.val());
       });
 
-      that.setState({ schools: list });
+      that.setState({ schools: list, isLoading: false });
     });
   }
 
@@ -125,6 +124,15 @@ class SchoolTable extends Component {
       pagination: false,
       selectableRows: false,
       expandableRows: true,
+      textLabels: {
+        body: {
+          noMatch: this.state.isLoading ? (
+            <Loader />
+          ) : (
+            "Sorry, there is no matching data to display"
+          )
+        }
+      },
       renderExpandableRow: (rowData, rowMeta) => {
         const colSpan = rowData.length + 1;
         return (

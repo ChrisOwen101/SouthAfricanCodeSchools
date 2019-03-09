@@ -12,7 +12,9 @@ const App = () => (
       <Grid item xs={9}>
         <SchoolTable />
       </Grid>
-      <Grid item xs={3} />
+      <Grid item xs={3}>
+        <SideBar />
+      </Grid>
     </Grid>
     <Footer />
   </div>

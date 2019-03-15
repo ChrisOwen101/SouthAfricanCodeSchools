@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import fire from "./firebase";
-import Checkbox from "@material-ui/core/Checkbox";
+import { Checkbox } from "@material-ui/core";
+import { Link } from '@material-ui/core';
 import MUIDataTable from "mui-datatables";
 import Loader from "./Loader";
 import SchoolPopUp from "./SchoolPopUp";
@@ -15,13 +16,11 @@ const columns = [
       sortDirection: "asc",
       customBodyRender: (value, tableMeta, updateValue) => {
         return (
-          <a
+          <Link
             href={tableMeta.rowData[1]}
             target="_blank"
             rel="noopener noreferrer"
-          >
-            {value}
-          </a>
+          >{value}</Link>
         );
       }
     }

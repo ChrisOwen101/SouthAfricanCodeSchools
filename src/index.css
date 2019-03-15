@@ -18,10 +18,6 @@ code {
   padding: 15px;
 }
 
-a {
-  color: #295712;
-}
-
 a:visited {
   color: #487C2F;
 }
@@ -30,6 +26,9 @@ a:visited {
   width: 100%;
   text-align: center;
   padding: 25px;
+}
+#footer a {
+  padding: 0 25px;
 }
 
 .loader {

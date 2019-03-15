@@ -30,6 +30,11 @@ const theme = createMuiTheme({
         fontSize: 15,
       },
     },
+    MUIDataTableHeadCell: {
+      root: {
+        fontSize: 15,
+      },
+    },
   },
 });
 

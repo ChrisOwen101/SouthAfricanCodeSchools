@@ -67,7 +67,7 @@ const columns = [
   },
   {
     name: "courseLength",
-    label: "Course Length (Months)",
+    label: "Duration (Months)",
     options: {
       filter: false,
       sort: true

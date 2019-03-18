@@ -5,7 +5,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import EmailCell from "./tablecells/EmailCell";
+import SchoolContent from "./SchoolContent";
 
 class SchoolPopUp extends Component {
   state = {
@@ -29,9 +29,7 @@ class SchoolPopUp extends Component {
       >
         <DialogTitle>{this.props.school.name}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            <EmailCell email={this.props.school.email} />
-          </DialogContentText>
+          <SchoolContent school={this.props.school} />
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleClose} color="primary">

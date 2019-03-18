@@ -9,4 +9,4 @@ install:
   - npm update
   - npm run build
 after_success:
-  - firebase deploy --token $firebase_key
+  - firebase deploy --token $FIREBASE_KEY

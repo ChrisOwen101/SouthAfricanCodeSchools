@@ -28,6 +28,10 @@ npm update && npm start
 
 ## How to deploy
 
+[Travis CI](https://travis-ci.org/) is setup to automatically deploy on every commit or merge to Master.
+
+## How to deploy locally
+
 To build:
 
 ```
@@ -39,7 +43,6 @@ To deploy (you'll need the keys for Firebase. Not sure on the best way to manage
 ```
 firebase deploy
 ```
-
-## Firebase Credentials
+### Firebase Credentials
 
 Speak to Chris Owen (@ChrisOwen101) for details

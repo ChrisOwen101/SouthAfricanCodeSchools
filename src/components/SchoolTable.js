@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import fire from "./firebase";
-import { Checkbox } from "@material-ui/core";
 import { Link } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 import Loader from "./Loader";

@@ -43,6 +43,6 @@ To deploy (you'll need the keys for Firebase. Not sure on the best way to manage
 ```
 firebase deploy
 ```
-## Firebase Credentials
+### Firebase Credentials
 
 Speak to Chris Owen (@ChrisOwen101) for details

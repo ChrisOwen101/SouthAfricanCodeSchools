@@ -6,9 +6,8 @@ script:
 cache: npm
 install:
   - npm install -g firebase-tools
-  - npm install @material-ui/core
-  - npm install @material-ui/icons
   - npm update
+  - npm install
   - npm run build
 after_success:
   - firebase deploy --token $firebase_key

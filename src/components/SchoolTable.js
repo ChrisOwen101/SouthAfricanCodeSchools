@@ -45,6 +45,15 @@ const columns = [
     }
   },
   {
+    name: "free",
+    label: "Free",
+    options: {
+      filter: true,
+      sort: false,
+      display: "excluded"
+    }
+  },
+  {
     name: "cost",
     label: "Cost",
     options: {

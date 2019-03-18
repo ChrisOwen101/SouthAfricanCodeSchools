@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 
-function convertToList(item) {
-  return [item];
-}
-
 function separateAndTrimList(list) {
-  if (typeof list != "array") {
-    return convertToList(list);
+  if (typeof list == "number") {
+    return [list];
   }
 
   return list.split(",").map(item => item.trim());

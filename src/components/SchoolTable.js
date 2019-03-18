@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import fire from "./firebase";
 import { Checkbox } from "@material-ui/core";
-import { Link } from '@material-ui/core';
+import { Link } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 import Loader from "./Loader";
 import SchoolPopUp from "./SchoolPopUp";
@@ -20,7 +20,9 @@ const columns = [
             href={tableMeta.rowData[1]}
             target="_blank"
             rel="noopener noreferrer"
-          >{value}</Link>
+          >
+            {value}
+          </Link>
         );
       }
     }
@@ -40,17 +42,6 @@ const columns = [
     options: {
       filter: true,
       sort: false
-    }
-  },
-  {
-    name: "free",
-    label: "Free",
-    options: {
-      filter: true,
-      sort: false,
-      customBodyRender: (value, tableMeta, updateValue) => {
-        return <Checkbox disabled checked={value} />;
-      }
     }
   },
   {

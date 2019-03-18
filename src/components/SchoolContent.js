@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
+import sendToLearningMaterial from "../util/TechnologyTypeRouter";
 
 function separateAndTrimList(list) {
   if (typeof list == "number") {
@@ -55,7 +56,14 @@ class SchoolContent extends Component {
           Technologies
           <div>
             {technologies.map((item, index) => {
-              return <Chip label={item} style={chipStyle} color="primary" />;
+              return (
+                <Chip
+                  label={item}
+                  style={chipStyle}
+                  color="primary"
+                  onClick={() => sendToLearningMaterial(item)}
+                />
+              );
             })}
           </div>
         </Paper>

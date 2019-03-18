@@ -32,7 +32,7 @@ function getWebsiteFromType(type) {
   } else {
     directTo = "https://www.google.com/search?q=what+is+" + type;
   }
-  https: return directTo;
+  return directTo;
 }
 
 function sendToLearningMaterial(type) {

@@ -4,8 +4,6 @@ node_js:
 script:
   - echo "Deploy!!"
 cache: npm
-before_install:
-  - npm i -g npm@6.4.1
 install:
   - npm install -g firebase-tools
   - npm install

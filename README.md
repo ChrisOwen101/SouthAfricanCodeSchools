@@ -28,7 +28,7 @@ npm update && npm start
 
 ## How to deploy
 
-Travis CI is setup to automatically deploy on every commit or merge to Master.
+[Travis CI](https://travis-ci.org/) is setup to automatically deploy on every commit or merge to Master.
 
 ## How to deploy locally
 

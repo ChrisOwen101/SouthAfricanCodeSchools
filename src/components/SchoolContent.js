@@ -36,6 +36,7 @@ class SchoolContent extends Component {
             {courseLength.map((item, index) => {
               return (
                 <Chip
+                  key={item}
                   label={item + " months"}
                   style={chipStyle}
                   color="secondary"
@@ -48,7 +49,14 @@ class SchoolContent extends Component {
           Locations
           <div>
             {locations.map((item, index) => {
-              return <Chip label={item} style={chipStyle} color="secondary" />;
+              return (
+                <Chip
+                  key={item}
+                  label={item}
+                  style={chipStyle}
+                  color="secondary"
+                />
+              );
             })}
           </div>
         </Paper>
@@ -58,6 +66,7 @@ class SchoolContent extends Component {
             {technologies.map((item, index) => {
               return (
                 <Chip
+                  key={item}
                   label={item}
                   style={chipStyle}
                   color="primary"

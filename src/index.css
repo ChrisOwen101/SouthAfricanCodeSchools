@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* Avoids scroll bars appearing */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -57,7 +58,15 @@ a:visited {
   }
 }
 
+#tableContainer {
+  margin: 16px;
+}
+
 @media screen and (max-width: 959px) {
+  #tableContainer {
+    margin: 2px 0 10px;
+  }
+
   table {
     display: flex!important;
   }
@@ -90,6 +99,11 @@ a:visited {
     overflow: hidden; /* Ensures odd/even cells don't stretch and mismatch */
     white-space: normal; /* Allows wrapping of cell texts */
 
+  }
+
+  .schoolRow td a {
+    font-weight: bold;
+    font-size: 105%;
   }
 
   /* Left-hand column containing labels */

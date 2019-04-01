@@ -156,7 +156,7 @@ class SchoolTable extends Component {
     };
 
     return (
-      <div style={style}>
+      <div id='tableContainer'>
         <MUIDataTable
           style={style}
           data={this.state.schools}

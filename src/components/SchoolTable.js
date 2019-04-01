@@ -143,6 +143,11 @@ class SchoolTable extends Component {
           popUpOpen: true,
           selectedSchool: this.state.schools[rowMeta.dataIndex]
         });
+      },
+      setRowProps: (row) => {
+        return {
+          className: 'schoolRow',
+        };
       }
     };
 

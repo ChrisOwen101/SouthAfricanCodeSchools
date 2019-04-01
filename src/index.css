@@ -56,3 +56,52 @@ a:visited {
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 959px) {
+  table {
+    display: flex!important;
+  }
+
+  tbody {
+    display: flex!important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .schoolRow {
+    display: flex!important;
+    width: 100%;
+    height: unset!important; /* Allow height to stretch as needed */
+    border-width: 1px!important;
+    padding: 15px 0;
+    flex-wrap: wrap;
+    flex-grow: 1;
+  }
+
+  .schoolRow td {
+    display: flex;
+    width: auto!important;
+    height: unset;
+    border: none;
+    background-color: unset;
+    padding: 10px;
+    padding-left: 5%;
+    overflow: hidden; /* Ensures odd/even cells don't stretch and mismatch */
+    white-space: normal; /* Allows wrapping of cell texts */
+
+  }
+
+  /* Left-hand column containing labels */
+  .schoolRow td:nth-child(odd) {
+    flex-basis: 25%;
+    font-size: 85%;
+    text-transform: lowercase;
+  }
+
+  /* Right-hand column containing data */
+  .schoolRow td:nth-child(even) {
+    flex-basis: 55%;
+    padding-left: 7%;
+  }
+}

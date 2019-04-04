@@ -26,10 +26,13 @@ a:visited {
 #footer {
   width: 100%;
   text-align: center;
-  padding: 25px;
+  display: flex;
+  justify-content: center;
+  padding: 5px 0 20px 0;
 }
 #footer a {
-  padding: 0 25px;
+  min-height: 20px;
+  padding: 20px 40px;
 }
 
 .loader {
@@ -118,4 +121,9 @@ a:visited {
     flex-basis: 55%;
     padding-left: 7%;
   }
+
+  #footer {
+    flex-direction: column;
+  }
+
 }

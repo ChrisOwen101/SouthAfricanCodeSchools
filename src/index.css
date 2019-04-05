@@ -81,6 +81,10 @@ a:visited {
     width: 100%;
   }
 
+  tr { /* May need to add a class to this row to avoid it affecting future elements */
+    height: unset!important; /* Allow height to stretch as needed */
+  }
+
   .schoolRow {
     display: flex!important;
     width: 100%;
@@ -89,6 +93,11 @@ a:visited {
     padding: 15px 0;
     flex-wrap: wrap;
     flex-grow: 1;
+    position: relative;
+  }
+
+  .schoolRow td:first-child {
+    position: absolute;
   }
 
   .schoolRow td {

@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import fire from "./firebase";
 import { Link } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
 import Loader from "./Loader";
-import SchoolPopUp from "./SchoolPopUp";
+import SchoolContent from "./SchoolContent";
 
 const columns = [
   {
@@ -93,12 +95,7 @@ const columns = [
 class SchoolTable extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      schools: [],
-      isLoading: true,
-      popUpOpen: false,
-      selectedSchool: {}
-    };
+    this.state = { schools: [], isLoading: true };
   }
 
   componentWillMount() {
@@ -120,15 +117,11 @@ class SchoolTable extends Component {
     });
   }
 
-  onPopUpClose = event => {
-    this.setState({ popUpOpen: false });
-  };
-
   render() {
     const options = {
       pagination: false,
       selectableRows: false,
-      expandableRows: false,
+      expandableRows: true,
       textLabels: {
         body: {
           noMatch: this.state.isLoading ? (
@@ -138,11 +131,17 @@ class SchoolTable extends Component {
           )
         }
       },
-      onRowClick: (rowData, rowMeta) => {
-        this.setState({
-          popUpOpen: true,
-          selectedSchool: this.state.schools[rowMeta.dataIndex]
-        });
+      renderExpandableRow: (rowData, rowMeta) => {
+        const colSpan = rowData.length + 1;
+        console.log(this.state.schools[rowMeta.dataIndex]);
+        return (
+          <TableRow>
+            <TableCell colSpan={colSpan}>
+              <SchoolContent school={this.state.schools[rowMeta.dataIndex]} />
+            </TableCell>
+          </TableRow>
+        );
+
       },
       setRowProps: (row) => {
         return {
@@ -162,11 +161,6 @@ class SchoolTable extends Component {
           data={this.state.schools}
           columns={columns}
           options={options}
-        />
-        <SchoolPopUp
-          open={this.state.popUpOpen}
-          school={this.state.selectedSchool}
-          onClose={this.onPopUpClose}
         />
       </div>
     );

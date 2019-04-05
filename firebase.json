@@ -10,7 +10,11 @@
       {
         "source": "**",
         "destination": "/index.html"
-      }
+      },
+      {
+        "source": "info-update{,/**}",
+        "destination": "/info-update.html"
+      },
     ]
   }
 }

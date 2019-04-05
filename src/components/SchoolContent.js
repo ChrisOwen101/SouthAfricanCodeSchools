@@ -30,7 +30,7 @@ class SchoolContent extends Component {
 
     return (
       <div>
-        <Paper style={paperStyle}>
+
           Course Length
           <div>
             {courseLength.map((item, index) => {
@@ -44,8 +44,7 @@ class SchoolContent extends Component {
               );
             })}
           </div>
-        </Paper>
-        <Paper style={paperStyle}>
+
           Locations
           <div>
             {locations.map((item, index) => {
@@ -59,8 +58,6 @@ class SchoolContent extends Component {
               );
             })}
           </div>
-        </Paper>
-        <Paper style={paperStyle}>
           Technologies
           <div>
             {technologies.map((item, index) => {
@@ -75,7 +72,7 @@ class SchoolContent extends Component {
               );
             })}
           </div>
-        </Paper>
+
       </div>
     );
   }

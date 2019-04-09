@@ -96,8 +96,15 @@ a:visited {
     position: relative;
   }
 
+  /* The > button to expand the row */
   .schoolRow td:first-child {
     position: absolute;
+    right: 0px;
+    left: 80%;
+    bottom: 0px;
+    top: 76%;
+    font-weight: bold;
+    background-color: #ebfce188;
   }
 
   .schoolRow td {
@@ -119,14 +126,14 @@ a:visited {
   }
 
   /* Left-hand column containing labels */
-  .schoolRow td:nth-child(odd) {
+  .schoolRow td:nth-child(even) {
     flex-basis: 25%;
     font-size: 85%;
     text-transform: lowercase;
   }
 
   /* Right-hand column containing data */
-  .schoolRow td:nth-child(even) {
+  .schoolRow td:nth-child(odd) {
     flex-basis: 55%;
     padding-left: 7%;
   }

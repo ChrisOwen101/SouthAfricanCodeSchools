@@ -14,7 +14,7 @@ const columns = [
     options: {
       filter: false,
       sort: true,
-      sortDirection: "asc",
+      sortDirection: "desc",
       customBodyRender: (value, tableMeta, updateValue) => {
         return (
           <Link

@@ -122,6 +122,9 @@ class SchoolTable extends Component {
       pagination: false,
       selectableRows: false,
       expandableRows: true,
+      onCellClick: (cellIndex, rowIndex) => {
+        console.log("todo: expand/collapse " + cellIndex, rowIndex);
+      },
       textLabels: {
         body: {
           noMatch: this.state.isLoading ? (

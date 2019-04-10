@@ -65,6 +65,11 @@ a:visited {
   margin: 16px;
 }
 
+.heading {
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+}
+
 @media screen and (max-width: 959px) {
   #tableContainer {
     margin: 2px 0 10px;
@@ -81,6 +86,10 @@ a:visited {
     width: 100%;
   }
 
+  tr { /* May need to add a class to this row to avoid it affecting future elements */
+    height: unset!important; /* Allow height to stretch as needed */
+  }
+
   .schoolRow {
     display: flex!important;
     width: 100%;
@@ -89,6 +98,18 @@ a:visited {
     padding: 15px 0;
     flex-wrap: wrap;
     flex-grow: 1;
+    position: relative;
+  }
+
+  /* The > button to expand the row */
+  .schoolRow td:first-child {
+    position: absolute;
+    right: 0px;
+    left: 80%;
+    bottom: 0px;
+    top: 76%;
+    font-weight: bold;
+    background-color: #ebfce188;
   }
 
   .schoolRow td {
@@ -110,14 +131,14 @@ a:visited {
   }
 
   /* Left-hand column containing labels */
-  .schoolRow td:nth-child(odd) {
+  .schoolRow td:nth-child(even) {
     flex-basis: 25%;
     font-size: 85%;
     text-transform: lowercase;
   }
 
   /* Right-hand column containing data */
-  .schoolRow td:nth-child(even) {
+  .schoolRow td:nth-child(odd) {
     flex-basis: 55%;
     padding-left: 7%;
   }

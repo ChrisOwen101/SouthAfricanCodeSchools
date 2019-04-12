@@ -14,8 +14,14 @@ import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Tooltip from '@material-ui/core/Tooltip';
 
 function separateAndTrimList(list) {
+
+  if (list.length == 0) {
+    return [];
+  }
+
   if (typeof list == "number") {
     return [list];
   }
@@ -35,8 +41,8 @@ class SchoolContent extends Component {
     let theme = this.props.theme;
 
 
-    let technologies = separateAndTrimList(school.technologies);
-    let locations = separateAndTrimList(school.locations);
+    let technologiesList = separateAndTrimList(school.technologies);
+    let locationsList = separateAndTrimList(school.locations);
 
     const cardStyle = {
       boxShadow: "none"
@@ -57,6 +63,88 @@ class SchoolContent extends Component {
       backgroundColor: theme.palette.secondary.light,
       color: theme.palette.secondary.contrastText
     };
+
+    // TODO: Once established, each of the below fields should move into their own components.
+
+    let courseLength = "";
+    if (school.courseLength.Length > 0) {
+      courseLength =
+        <div>
+          <div className={classes.heading}>Course Length</div>
+            <Typography component="p" gutterBottom>
+              {school.courseLengthExtended}
+            </Typography>
+        </div>
+        ;
+    }
+
+    let acceptanceRequirements = "";
+    if (school.acceptanceRequirements.length > 0) {
+      acceptanceRequirements =
+        <div>
+          <div className={classes.heading}>Acceptance Requirements</div>
+            <Typography component="p" gutterBottom>
+              {school.acceptanceRequirements}
+            </Typography>
+        </div>
+        ;
+    }
+
+    let numberOfGraduates = "";
+    if (school.numberOfGraduates.Length > 0) {
+      numberOfGraduates =
+        <div className={classes.heading}>
+          <Tooltip placement="bottom-start" title="Details of past graduation rates">
+            <div>Graduates</div>
+          </Tooltip>
+
+        <Typography component="p" gutterBottom>
+          {school.numberOfGraduates}
+        </Typography>
+        </div>
+      ;
+    }
+
+    let locations = "";
+    if (locationsList.length > 0) {
+      locations =
+      <div>
+        <div className={classes.heading}>Locations</div>
+          <div>
+            {locationsList.map((item, index) => {
+              return (
+                <Chip
+                  key={item}
+                  label={item}
+                  style={chipStylePrimary}
+                />
+              );
+            })}
+          </div>
+      </div>
+      ;
+    }
+
+    let technologies = "";
+    if (technologiesList.length > 0) {
+      technologies =
+      <div>
+        <div className={classes.heading}>Technologies</div>
+        <div>
+          {technologiesList.map((item, index) => {
+            return (
+              <Chip
+                key={item}
+                label={item}
+                style={chipStyleSecondary}
+                onClick={() => sendToLearningMaterial(item)}
+              />
+            );
+          })}
+        </div>
+      </div>
+      ;
+    }
 
     return (
       <div>
@@ -84,36 +172,15 @@ class SchoolContent extends Component {
             {school.additionalInfo}
           </Typography>
 
-          <div className={classes.heading}>Course Length</div>
-          <Typography component="p" gutterBottom>
-            {school.courseLengthExtended}
-          </Typography>
+          {courseLength}
 
-          <div className={classes.heading}>Locations</div>
-          <div>
-            {locations.map((item, index) => {
-              return (
-                <Chip
-                  key={item}
-                  label={item}
-                  style={chipStylePrimary}
-                />
-              );
-            })}
-          </div>
-          <div className={classes.heading}>Technologies</div>
-          <div>
-            {technologies.map((item, index) => {
-              return (
-                <Chip
-                  key={item}
-                  label={item}
-                  style={chipStyleSecondary}
-                  onClick={() => sendToLearningMaterial(item)}
-                />
-              );
-            })}
-          </div>
+          {acceptanceRequirements}
+
+          {numberOfGraduates}
+
+          {locations}
+
+          {technologies}
 
 
         </CardContent>

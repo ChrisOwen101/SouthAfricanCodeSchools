@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withTheme } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 import sendToLearningMaterial from "../util/TechnologyTypeRouter";
 
@@ -25,11 +26,14 @@ function separateAndTrimList(list) {
 class SchoolContent extends Component {
   render() {
     let classes = {};
-    classes.card = "CardSchool";
-    classes.avatar = "Avatar";
-    classes.media = "Media";
-    classes.actions = "Actions";
+    classes.card = "cardSchool";
+    classes.avatar = "avatar";
+    classes.media = "media";
+    classes.actions = "actions";
+    classes.heading = "heading";
     let school = this.props.school;
+    let theme = this.props.theme;
+
 
     let technologies = separateAndTrimList(school.technologies);
     let locations = separateAndTrimList(school.locations);
@@ -38,8 +42,20 @@ class SchoolContent extends Component {
       boxShadow: "none"
     }
 
-    const chipStyle = {
+    const chipStyleBase = {
       margin: "4px 4px 0px 0px"
+    };
+
+    const chipStylePrimary = {
+      ...chipStyleBase,
+      backgroundColor: theme.palette.primary.light,
+      color: theme.palette.primary.contrastText
+    };
+
+    const chipStyleSecondary = {
+      ...chipStyleBase,
+      backgroundColor: theme.palette.secondary.light,
+      color: theme.palette.secondary.contrastText
     };
 
     return (
@@ -68,33 +84,31 @@ class SchoolContent extends Component {
             {school.additionalInfo}
           </Typography>
 
-          <div class="heading">Course Length</div>
+          <div className={classes.heading}>Course Length</div>
           <Typography component="p" gutterBottom>
             {school.courseLengthExtended}
           </Typography>
 
-          <div class="heading">Locations</div>
+          <div className={classes.heading}>Locations</div>
           <div>
             {locations.map((item, index) => {
               return (
                 <Chip
                   key={item}
                   label={item}
-                  style={chipStyle}
-                  color="secondary"
+                  style={chipStylePrimary}
                 />
               );
             })}
           </div>
-          <div class="heading">Technologies</div>
+          <div className={classes.heading}>Technologies</div>
           <div>
             {technologies.map((item, index) => {
               return (
                 <Chip
                   key={item}
                   label={item}
-                  style={chipStyle}
-                  color="primary"
+                  style={chipStyleSecondary}
                   onClick={() => sendToLearningMaterial(item)}
                 />
               );
@@ -129,4 +143,4 @@ class SchoolContent extends Component {
   }
 }
 
-export default SchoolContent;
+export default withTheme()(SchoolContent);

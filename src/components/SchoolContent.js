@@ -67,7 +67,7 @@ class SchoolContent extends Component {
     // TODO: Once established, each of the below fields should move into their own components.
 
     let courseLength = "";
-    if (school.courseLength.Length > 0) {
+    if (school.courseLength.length > 0) {
       courseLength =
         <div>
           <div className={classes.heading}>Course Length</div>
@@ -91,7 +91,7 @@ class SchoolContent extends Component {
     }
 
     let numberOfGraduates = "";
-    if (school.numberOfGraduates.Length > 0) {
+    if (school.numberOfGraduates.length > 0) {
       numberOfGraduates =
         <div className={classes.heading}>
           <Tooltip placement="bottom-start" title="Details of past graduation rates">
@@ -100,6 +100,21 @@ class SchoolContent extends Component {
 
         <Typography component="p" gutterBottom>
           {school.numberOfGraduates}
+        </Typography>
+        </div>
+      ;
+    }
+
+    let industryPartners = "";
+    if (school.industryPartners.length > 0) {
+      industryPartners =
+        <div className={classes.heading}>
+          <Tooltip placement="bottom-start" title="Partners may provide additional opportunities for jobs and internships.">
+            <div>Industry Partners</div>
+          </Tooltip>
+
+        <Typography component="p" gutterBottom>
+          {school.industryPartners}
         </Typography>
         </div>
       ;
@@ -177,6 +192,8 @@ class SchoolContent extends Component {
           {acceptanceRequirements}
 
           {numberOfGraduates}
+
+          {industryPartners}
 
           {locations}
 

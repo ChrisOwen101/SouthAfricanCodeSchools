@@ -16,6 +16,11 @@ import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Tooltip from '@material-ui/core/Tooltip';
 
+// TODO: Move below three resources to Stipend component once defined.
+import MoneyIcon from '@material-ui/icons/AttachMoney';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
+
 function separateAndTrimList(list) {
 
   if (list.length == 0) {
@@ -35,6 +40,7 @@ class SchoolContent extends Component {
     classes.card = "cardSchool";
     classes.avatar = "avatar";
     classes.media = "media";
+    classes.chip = "chip";
     classes.actions = "actions";
     classes.heading = "heading";
     let school = this.props.school;
@@ -161,6 +167,32 @@ class SchoolContent extends Component {
       ;
     }
 
+    let stipend = "";
+
+    // Don't show anything if value empty or unknown ("-").
+    if ((school.stipend.length > 0) && (school.stipend !== "-")) {
+      let stipendIcon = null;
+      let stipendLabel = "Stipend";
+      if (school.stipend.toLowerCase() === 'yes') {
+        stipendIcon = <CheckIcon />;
+      } else if (school.stipend.toLowerCase() === 'no') {
+        stipendIcon = <CloseIcon />;
+      } else {
+        // If text has been entered instead of yes/no, then display the text.
+        stipendLabel += ": " + school.stipend;
+        stipendIcon = <MoneyIcon />;
+      }
+      stipend =
+        <Chip
+          icon={stipendIcon}
+          label={stipendLabel}
+          className={classes.chip}
+          color="primary"
+          style={chipStyleBase}
+        />
+      ;
+    }
+
     return (
       <div>
         <Card className={classes.card} style={cardStyle}>
@@ -199,6 +231,7 @@ class SchoolContent extends Component {
 
           {technologies}
 
+          {stipend}
 
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>

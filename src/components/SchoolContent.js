@@ -25,6 +25,9 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Link } from "@material-ui/core";
 import EmailIcon from '@material-ui/icons/Email';
 
+// TODO: Move to BusinessType component.
+import BusinessIcon from '@material-ui/icons/Business';
+
 function separateAndTrimList(list) {
 
   if (list.length == 0) {
@@ -115,17 +118,55 @@ class SchoolContent extends Component {
       ;
     }
 
+    let employmentAssistance = "";
+    if (school.employmentAssistance.length > 0) {
+      employmentAssistance =
+        <div className={classes.heading}>
+          <div>Employment Assistance</div>
+
+          <Typography component="p" gutterBottom>
+            {school.employmentAssistance}
+          </Typography>
+        </div>
+      ;
+    }
+
+    let accreditation = "";
+    if (school.accreditation.length > 0) {
+      accreditation =
+        <div className={classes.heading}>
+          <div>Accreditation</div>
+
+          <Typography component="p" gutterBottom>
+            {school.accreditation}
+          </Typography>
+        </div>
+      ;
+    }
+
     let industryPartners = "";
     if (school.industryPartners.length > 0) {
       industryPartners =
         <div className={classes.heading}>
-          <Tooltip placement="bottom-start" title="Partners may provide additional opportunities for jobs and internships.">
+          <Tooltip placement="top-start" title="Partners may provide additional opportunities for jobs and internships.">
             <div>Industry Partners</div>
           </Tooltip>
 
         <Typography component="p" gutterBottom>
           {school.industryPartners}
         </Typography>
+        </div>
+      ;
+    }
+
+    let successInfo = "";
+    if (school.successInfo.length > 0) {
+      successInfo =
+        <div className={classes.heading}>
+          <div>Successes</div>
+          <Typography component="p" gutterBottom>
+            {school.successInfo}
+          </Typography>
         </div>
       ;
     }
@@ -190,6 +231,7 @@ class SchoolContent extends Component {
       if (school.stipend.toLowerCase() === 'yes') {
         stipendIcon = <CheckIcon />;
       } else if (school.stipend.toLowerCase() === 'no') {
+        stipendLabel = "No Stipend";
         stipendIcon = <CloseIcon />;
       } else {
         // If text has been entered instead of yes/no, then display the text.
@@ -200,6 +242,20 @@ class SchoolContent extends Component {
         <Chip
           icon={stipendIcon}
           label={stipendLabel}
+          className={classes.chip}
+          color="primary"
+          style={chipStyleBase}
+        />
+      ;
+    }
+
+    let businessType = "";
+    // Don't show anything if value empty or unknown ("-").
+    if ((school.businessType.length > 0) && (school.businessType !== "-")) {
+      businessType =
+        <Chip
+          icon={ <BusinessIcon /> }
+          label={school.businessType}
           className={classes.chip}
           color="primary"
           style={chipStyleBase}
@@ -239,13 +295,21 @@ class SchoolContent extends Component {
 
           {numberOfGraduates}
 
+          {employmentAssistance}
+
+          {accreditation}
+
           {industryPartners}
+
+          {successInfo}
 
           {locations}
 
           {technologies}
 
           {stipend}
+
+          {businessType}
 
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>

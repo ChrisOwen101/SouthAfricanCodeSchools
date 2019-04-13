@@ -21,6 +21,10 @@ import MoneyIcon from '@material-ui/icons/AttachMoney';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 
+// TODO: Move to EmailButton component.
+import { Link } from "@material-ui/core";
+import EmailIcon from '@material-ui/icons/Email';
+
 function separateAndTrimList(list) {
 
   if (list.length == 0) {
@@ -167,8 +171,18 @@ class SchoolContent extends Component {
       ;
     }
 
-    let stipend = "";
+    let emailButton = "";
+    if (school.publicEmail.length > 0) {
+      emailButton =
+        <Link href={"mailto:" + school.publicEmail}>
+          <IconButton aria-label="Send Email">
+            <EmailIcon />
+          </IconButton>
+        </Link>
+      ;
+    }
 
+    let stipend = "";
     // Don't show anything if value empty or unknown ("-").
     if ((school.stipend.length > 0) && (school.stipend !== "-")) {
       let stipendIcon = null;
@@ -235,6 +249,7 @@ class SchoolContent extends Component {
 
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
+          {emailButton}
           <IconButton aria-label="Add to favorites">
             <FavoriteIcon />
           </IconButton>

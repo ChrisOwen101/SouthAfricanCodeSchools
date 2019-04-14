@@ -80,7 +80,7 @@ class SchoolContent extends Component {
     // TODO: Once established, each of the below fields should move into their own components.
 
     let courseLength = "";
-    if (school.courseLength.length > 0) {
+    if ((school.courseLength.length > 0)  && (school.courseLength !== "-")) {
       courseLength =
         <div>
           <div className={classes.heading}>Course Length</div>
@@ -263,6 +263,12 @@ class SchoolContent extends Component {
       ;
     }
 
+
+    let yearEstablished = "";
+    if (school.yearEstablished.toString().length > 0) {
+      yearEstablished = "since " + school.yearEstablished;
+    }
+
     return (
       <div>
         <Card className={classes.card} style={cardStyle}>
@@ -276,7 +282,7 @@ class SchoolContent extends Component {
             </IconButton>
           }
           title={school.name}
-          subheader={school.yearEstablished}
+          subheader={yearEstablished}
         />
         <CardMedia
           className={classes.media}

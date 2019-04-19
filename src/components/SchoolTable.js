@@ -105,16 +105,14 @@ class SchoolTable extends Component {
       .orderByKey()
       .limitToLast(100);
 
-    var that = this;
-
     messagesRef.on("value", function(snapshot) {
       let list = [];
       snapshot.forEach(function(school) {
         list.push(school.val());
       });
 
-      that.setState({ schools: list, isLoading: false });
-    });
+      this.setState({ schools: list, isLoading: false });
+    }.bind(this));
   }
 
   render() {

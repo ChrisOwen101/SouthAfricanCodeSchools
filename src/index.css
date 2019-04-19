@@ -24,6 +24,10 @@ code {
   margin-top: 5px;
 }
 
+a {
+  color: #28660a;
+}
+
 a:visited {
   color: #487C2F;
 }

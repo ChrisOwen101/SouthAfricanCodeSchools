@@ -12,6 +12,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import SchoolIcon from '@material-ui/icons/School';
 import Logo from "./Logo";
+import AboutPage from "./AboutPage";
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -23,11 +24,18 @@ class SideBar extends Component {
     left: false,
     bottom: false,
     right: false,
+    aboutOpen: false,
   };
 
   toggleDrawer = (side, open) => () => {
     this.setState({
       [side]: open,
+    });
+  };
+
+  toggleAbout = (open) => () => {
+    this.setState({
+      aboutOpen: open,
     });
   };
 
@@ -41,7 +49,7 @@ class SideBar extends Component {
       <div id="menuList" className={classes.list}>
         <List>
           <Logo type='full' />
-          <ListItem button key="about">
+          <ListItem button key="about" onClick={this.toggleAbout(true)}>
               <ListItemIcon><SchoolIcon /></ListItemIcon>
               <ListItemText primary="About this Project" />
           </ListItem>
@@ -93,6 +101,7 @@ class SideBar extends Component {
             {sideList}
           </div>
         </Drawer>
+        <AboutPage open={this.state.aboutOpen} handleClose={this.toggleAbout(false)} />
       </div>
     );
   }

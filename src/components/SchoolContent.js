@@ -269,6 +269,11 @@ class SchoolContent extends Component {
       yearEstablished = "since " + school.yearEstablished;
     }
 
+    let otherHeading = "";
+    if ((stipend.toString().length > 0) || (businessType.toString().length > 0)) {
+      otherHeading = <div className={classes.heading}>Other info</div>;
+    }
+
     return (
       <div>
         <Card className={classes.card} style={cardStyle}>
@@ -312,6 +317,8 @@ class SchoolContent extends Component {
           {locations}
 
           {technologies}
+
+          {otherHeading}
 
           {stipend}
 

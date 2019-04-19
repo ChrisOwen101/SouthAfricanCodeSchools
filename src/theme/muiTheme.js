@@ -22,6 +22,24 @@ const theme = createMuiTheme({
     }
   },
   overrides: {
+    MuiListItemIcon: {
+      root: {
+        color: "#28660a",
+        marginRight: 0,
+        marginLeft: 10
+      }
+    },
+    MuiListItemText: {
+      primary: {
+        color: "#003a00",
+      }
+    },
+    MuiListItem: {
+      root: {
+        marginLeft: 10,
+        marginRight: 50
+      }
+    },
     MUIDataTableBodyCell: {
       root: {
         color: "#000",

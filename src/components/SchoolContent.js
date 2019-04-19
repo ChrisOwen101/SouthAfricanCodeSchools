@@ -30,7 +30,7 @@ import BusinessIcon from '@material-ui/icons/Business';
 
 function separateAndTrimList(list) {
 
-  if (list.length == 0) {
+  if (list.length === 0) {
     return [];
   }
 

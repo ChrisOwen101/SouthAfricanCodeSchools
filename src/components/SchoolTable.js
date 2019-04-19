@@ -135,7 +135,6 @@ class SchoolTable extends Component {
       },
       renderExpandableRow: (rowData, rowMeta) => {
         const colSpan = rowData.length + 1;
-        console.log(this.state.schools[rowMeta.dataIndex]);
         return (
           <TableRow>
             <TableCell colSpan={colSpan}>

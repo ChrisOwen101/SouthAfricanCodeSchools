@@ -39,6 +39,7 @@ a:visited {
   text-align: center;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 5px 0 20px 0;
 }
 #footer a {

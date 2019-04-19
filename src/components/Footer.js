@@ -1,18 +1,21 @@
 import React from "react";
-import { Link } from "@material-ui/core";
+import { Link, Typography } from "@material-ui/core";
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import CodeIcon from '@material-ui/icons/Code';
+import License from "./License";
 
 const Footer = () => {
   return (
     <div id="footer">
       <Link href="https://github.com/ChrisOwen101/SouthAfricanCodeSchools">
-        Go to the source on Github
+        <ListItem button key="github">
+          <ListItemIcon><CodeIcon /></ListItemIcon>
+          <ListItemText primary="View the source on GitHub" />
+        </ListItem>
       </Link>
-      <Link href="https://docs.google.com/forms/d/e/1FAIpQLSciBsoj5AH6RKc0-DAh_x3QAggP6bCkCFYdCN3Tdu4rKEmJlw/viewform">
-        Add a School
-      </Link>
-      <Link href="mailto:info@codeschooldirectory.co.za">
-        Something wrong? Contact us
-      </Link>
+      <License />
     </div>
   );
 };

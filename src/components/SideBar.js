@@ -11,10 +11,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import MailIcon from '@material-ui/icons/Mail';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import SchoolIcon from '@material-ui/icons/School';
+import Logo from "./Logo";
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
 
 class SideBar extends Component {
 
@@ -40,6 +40,7 @@ class SideBar extends Component {
     const sideList = (
       <div id="menuList" className={classes.list}>
         <List>
+          <Logo type='full' />
           <ListItem button key="about">
               <ListItemIcon><SchoolIcon /></ListItemIcon>
               <ListItemText primary="About this Project" />
@@ -67,6 +68,7 @@ class SideBar extends Component {
               <ListItemText primary="Contact Us" />
             </ListItem>
           </Link>
+          <Divider />
         </List>
       </div>
     );

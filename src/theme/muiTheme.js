@@ -26,7 +26,7 @@ const theme = createMuiTheme({
       root: {
         color: "#000",
         height: 30,
-        fontSize: 13
+        fontSize: 14
       }
     },
     MUIDataTableBodyRow: {

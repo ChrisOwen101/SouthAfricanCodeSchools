@@ -1,10 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from "@material-ui/core/Button";
 import CloseIcon from '@material-ui/icons/Close';
+import withMobileDialog from '@material-ui/core/withMobileDialog';
 
   class AboutPage extends React.Component {
 
@@ -19,6 +21,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 
     render() {
+      const { fullScreen } = this.props;
       const imgStyle = {width: 50, paddingLeft: 10, paddingRight: 10, top: 15, position: 'relative'}
       const cbImgStyle = {width: 160, float: 'right', padding: 10 }
       const buttonStyle = {padding: 20}
@@ -26,6 +29,7 @@ import CloseIcon from '@material-ui/icons/Close';
       return (
         <div id="about">
           <Dialog
+              fullScreen={fullScreen}
               open={this.props.open}
               onClose={this.props.handleClose}
               aria-labelledby="responsive-dialog-title"
@@ -66,5 +70,9 @@ import CloseIcon from '@material-ui/icons/Close';
     }
 };
 
-export default AboutPage;
+AboutPage.propTypes = {
+  fullScreen: PropTypes.bool.isRequired,
+};
+
+export default withMobileDialog()(AboutPage);
 

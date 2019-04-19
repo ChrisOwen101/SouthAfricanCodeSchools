@@ -6,6 +6,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import Loader from "./Loader";
 import SchoolContent from "./SchoolContent";
+import AppTitleBar from "./AppTitleBar";
 
 const columns = [
   {
@@ -158,6 +159,7 @@ class SchoolTable extends Component {
     return (
       <div id='tableContainer'>
         <MUIDataTable
+          title={<AppTitleBar/>}
           style={style}
           data={this.state.schools}
           columns={columns}

@@ -14,9 +14,20 @@ code {
     monospace;
 }
 
+#appTitleBar {
+  display: flex;
+}
+
+#appTitleBar button {
+  width: 55px;
+  height: 55px;
+  margin-top: 5px;
+}
+
 #logo img {
-  width: 200px;
-  padding: 15px;
+  width: 160px;
+  display: block;
+  padding-top: 10px;
 }
 
 a:visited {

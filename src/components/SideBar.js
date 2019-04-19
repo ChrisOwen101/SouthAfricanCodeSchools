@@ -1,22 +1,96 @@
 import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
+import Drawer from '@material-ui/core/Drawer';
+import Link from '@material-ui/core/Link';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import CodeIcon from '@material-ui/icons/Code';
+import EditIcon from '@material-ui/icons/Edit';
+import MailIcon from '@material-ui/icons/Mail';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import SchoolIcon from '@material-ui/icons/School';
+
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+
 
 class SideBar extends Component {
-  constructor(props) {
-    super(props);
-  }
+
+  state = {
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  };
+
+  toggleDrawer = (side, open) => () => {
+    this.setState({
+      [side]: open,
+    });
+  };
 
   render() {
-    const style = {
-      padding: "0px 4px px 0px",
-      margin: "16px 0px 0px 0px"
+
+    const classes = {
+      list: "list"
     };
+
+    const sideList = (
+      <div id="menuList" className={classes.list}>
+        <List>
+          <ListItem button key="about">
+              <ListItemIcon><SchoolIcon /></ListItemIcon>
+              <ListItemText primary="About this Project" />
+          </ListItem>
+          <ListItem button key="favourites">
+              <ListItemIcon><FavoriteIcon /></ListItemIcon>
+              <ListItemText primary="Favourites" />
+          </ListItem>
+          <Link href="https://github.com/ChrisOwen101/SouthAfricanCodeSchools">
+            <ListItem button key="github">
+              <ListItemIcon><CodeIcon /></ListItemIcon>
+              <ListItemText primary="Get the Code!" />
+            </ListItem>
+          </Link>
+          <Link href="https://docs.google.com/forms/d/e/1FAIpQLSciBsoj5AH6RKc0-DAh_x3QAggP6bCkCFYdCN3Tdu4rKEmJlw/viewform">
+            <ListItem button key="add-school">
+              <ListItemIcon><EditIcon /></ListItemIcon>
+              <ListItemText primary="Add a School" />
+            </ListItem>
+          </Link>
+          <Divider />
+          <Link href="mailto:info@codeschooldirectory.co.za">
+            <ListItem button key="contact-us">
+              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemText primary="Contact Us" />
+            </ListItem>
+          </Link>
+        </List>
+      </div>
+    );
 
     return (
       <div>
-        <Paper style={style} elevation={1}>
-          <p>Hello</p>
-        </Paper>
+        <IconButton
+          aria-label="More"
+          aria-owns="menuList"
+          aria-haspopup="true"
+          onClick={this.toggleDrawer('left', true)}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleDrawer('left', false)}
+            onKeyDown={this.toggleDrawer('left', false)}
+          >
+            {sideList}
+          </div>
+        </Drawer>
       </div>
     );
   }

@@ -81,6 +81,10 @@ a:visited {
 }
 
 @media screen and (max-width: 959px) {
+  #logo img {
+    width: 140px!important;
+  }
+
   #tableContainer {
     margin: 2px 0 10px;
   }

@@ -42,8 +42,23 @@ const columns = [
     name: "locations",
     label: "Locations",
     options: {
-      filter: true,
+      display: true,
+      filter: false,
       sort: false
+    }
+  },
+  {
+    name: "cities",
+    label: "Locations",
+    options: {
+      filter: true,
+      display: false,
+      sort: false,
+      customBodyRender: (cities) => {
+        return cities.map( (val, key) => {
+            return val;
+        });
+      },
     }
   },
   {
@@ -109,7 +124,10 @@ class SchoolTable extends Component {
     messagesRef.on("value", function(snapshot) {
       let list = [];
       snapshot.forEach(function(school) {
-        list.push(school.val());
+        let schoolRow = school.val()
+        // Cities row is converted from string to array, to allow proper filtering.
+        schoolRow.cities = schoolRow.cities.split(",").map(item => item.trim());
+        list.push(schoolRow);
       });
 
       this.setState({ schools: list, isLoading: false });

@@ -93,19 +93,35 @@ const columns = [
     name: "accreditation",
     label: "Accreditation",
     options: {
-      filter: true,
+      filter: false,
       sort: true
+    }
+  },
+  {
+    name: "accreditationFilter",
+    label: "Accreditation",
+    options: {
+      filter: true,
+      display: false
     }
   },
   {
     name: "stipend",
     label: "Stipend",
     options: {
-      filter: true,
       sort: false,
+      filter: false,
       display: false
     }
-  }
+  },
+  {
+    name: "stipendFilter",
+    label: "Stipend",
+    options: {
+      filter: true,
+      display: false
+    }
+  },
 ];
 
 class SchoolTable extends Component {

@@ -161,4 +161,10 @@ a:visited {
     flex-direction: column;
   }
 
+
+  .aboutClose button {
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+  }
+
 }

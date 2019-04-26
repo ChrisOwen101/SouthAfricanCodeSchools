@@ -8,6 +8,7 @@ import Loader from "./Loader";
 import SchoolContent from "./SchoolContent";
 import AppTitleBar from "./AppTitleBar";
 
+// Note: When adding new columns, if the column indexes change, then we need to review the "Show Column" hack, see index.css.
 const columns = [
   {
     name: "name",
@@ -119,6 +120,24 @@ const columns = [
     label: "Stipend",
     options: {
       filter: true,
+      display: false
+    }
+  },
+  {
+    name: "acceptanceRequirements",
+    label: "Acceptance Requirements",
+    options: {
+      sort: false,
+      filter: false,
+      display: false
+    }
+  },
+  {
+    name: "technologies",
+    label: "Technologies",
+    options: {
+      sort: false,
+      filter: false,
       display: false
     }
   },

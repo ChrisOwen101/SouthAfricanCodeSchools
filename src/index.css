@@ -168,3 +168,11 @@ a:visited {
   }
 
 }
+
+/* Hack to hide 'shadow' fields not wanted in Show Columns dropdown. */
+fieldset div label:nth-child(3),
+fieldset div label:nth-child(7),
+fieldset div label:nth-child(8)
+{
+  display: none;
+}

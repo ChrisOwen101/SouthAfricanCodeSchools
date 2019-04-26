@@ -3,21 +3,30 @@ function writeDataToFirebase() {
   var sheet = ss.getSheets()[0];
   var data = sheet.getDataRange().getValues();
   var dataToImport = {};
-  
+
   for(var i = 2; i < data.length; i++) {
     var programName = data[i][0];
+
+    // Stop processing at the end marker.
+    if (programName == "end") {
+      break;
+    }
+
     dataToImport[programName] = {};
 
     for(var y = 0; y < 100; y++) {
       var columnName = data[1][y]
-      if(columnName){
+      if(columnName) {
         columnName = toTitleCase(columnName).replace(/\s/g, '');
         columnName = decapitalizeFirstLetter(columnName)
-        dataToImport[programName][columnName] = data[i][y];
+        // Don't send columns that begin with the word 'private'.
+        if (columnName.substr(0,7) != 'private') {
+          dataToImport[programName][columnName] = data[i][y];
+        }
       }
     }
   }
-  
+
   var firebaseUrl = "https://southafricacodeschool.firebaseio.com/";
   var base = FirebaseApp.getDatabaseByUrl(firebaseUrl);
   base.setData("", dataToImport);

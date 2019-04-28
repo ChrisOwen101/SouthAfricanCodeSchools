@@ -11,6 +11,7 @@
     "mui-datatables": "git+https://www.github.com:gregnb/mui-datatables.git#4df9ad29",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-ga": "^2.5.7",
     "react-scripts": "2.1.8",
     "typeface-roboto": "0.0.54"
   },

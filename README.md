@@ -43,6 +43,16 @@ To deploy (you'll need the keys for Firebase. Not sure on the best way to manage
 ```
 firebase deploy
 ```
-### Firebase Credentials
+### Environment Variables
+There are three environment files included:
+1: .env
+  This is the one used when you build and run your app locally.
+2: .env.local
+  A reference copy of the .env file, indicating preferred local variables.
+3: .env.production
+  If you are authorised to and are going to be deploying a production, this contains a few extra values you should include.
 
-Speak to Chris Owen (@ChrisOwen101) for details
+Notes:
+- Changes to an .env file will need an app restart to take effect.
+- You can use: `git update-index --skip-worktree .env` to ignore changes to your local env file.
+- These files are only for publicly shareable keys and variables, don't put sensitive data here.

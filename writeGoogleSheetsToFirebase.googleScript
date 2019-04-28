@@ -27,8 +27,11 @@ function writeDataToFirebase() {
     }
   }
 
+  // TODO: Use more secure auth method as per https://sites.google.com/site/scriptsexamples/new-connectors-to-google-services/firebase/tutorials/authenticate-with-a-service-account
+  // Until this is complete, do not commit this token to any shared repo.
   var firebaseUrl = "https://southafricacodeschool.firebaseio.com/";
-  var base = FirebaseApp.getDatabaseByUrl(firebaseUrl);
+  var token = "[FIREBASE-DB-SECRET-GOES-HERE]";
+  var base = FirebaseApp.getDatabaseByUrl(firebaseUrl, token);
   base.setData("", dataToImport);
 }
 

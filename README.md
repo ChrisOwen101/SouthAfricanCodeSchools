@@ -45,12 +45,9 @@ firebase deploy
 ```
 ### Environment Variables
 There are three environment files included:
-1: .env
-  This is the one used when you build and run your app locally.
-2: .env.local
-  A reference copy of the .env file, indicating preferred local variables.
-3: .env.production
-  If you are authorised to and are going to be deploying a production, this contains a few extra values you should include.
+1. `.env` :  This is the one used when you build and run your app locally.
+2. `.env.local` :  A reference copy of the .env file, indicating preferred local variables.
+3. `.env.production` : If you are authorised to and are going to be deploying a production, this contains a few extra values you should include.
 
 Notes:
 - Changes to an .env file will need an app restart to take effect.

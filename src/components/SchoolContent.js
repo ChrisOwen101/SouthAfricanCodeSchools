@@ -27,6 +27,8 @@ import EmailIcon from '@material-ui/icons/Email';
 import BusinessIcon from '@material-ui/icons/Business';
 import LikeThis from "./LikeThis";
 
+import ShareButton from "./ShareButton";
+
 function separateAndTrimList(list) {
 
   if (list.length === 0) {

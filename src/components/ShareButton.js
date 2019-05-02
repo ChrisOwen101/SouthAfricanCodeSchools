@@ -7,8 +7,9 @@ class LikeThis extends Component {
     }
 
     render() {
+        const shareStyle = {width:"25px", height: "25px", border: "none", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundColor: "transparent",  backgroundImage: "url(./images/share.png)"};
         return (
-        <ShareButton title="Link Test" text="Just testing" url="http://www.codeschooldirectory.com" />
+        <ShareButton buttonText="" buttonStyle={ shareStyle } title="Link Test" text="Just testing" url="http://www.codeschooldirectory.com"/>
         );
     }
 }

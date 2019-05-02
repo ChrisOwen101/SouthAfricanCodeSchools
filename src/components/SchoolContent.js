@@ -105,16 +105,49 @@ class SchoolContent extends Component {
     }
 
     let numberOfGraduates = "";
-    if (school.numberOfGraduates.length > 0) {
+    if (school.numberOfGraduates.toString().length > 0) {
       numberOfGraduates =
         <div className={classes.heading}>
-          <Tooltip placement="bottom-start" title="Details of past graduation rates">
-            <div>Graduates</div>
-          </Tooltip>
+          <div># Graduates</div>
+          <Typography component="p" gutterBottom>
+            {school.numberOfGraduates}
+          </Typography>
+        </div>
+      ;
+    }
 
-        <Typography component="p" gutterBottom>
-          {school.numberOfGraduates}
-        </Typography>
+    let graduationRate = "";
+    if (school.graduationRate.toString().length > 0) {
+      graduationRate =
+        <div className={classes.heading}>
+          <div>Graduation Rate</div>
+          <Typography component="p" gutterBottom>
+            {school.graduationRate}
+          </Typography>
+        </div>
+      ;
+    }
+
+    let employmentRate = "";
+    if (school.employmentRate.toString().length > 0) {
+      employmentRate =
+        <div className={classes.heading}>
+          <div>Employment Rate</div>
+          <Typography component="p" gutterBottom>
+            {school.employmentRate}
+          </Typography>
+        </div>
+      ;
+    }
+
+    let courseStart = "";
+    if (school.courseStart.length > 0) {
+      courseStart =
+        <div className={classes.heading}>
+          <div>When does it start</div>
+          <Typography component="p" gutterBottom>
+            {school.courseStart}
+          </Typography>
         </div>
       ;
     }
@@ -300,9 +333,13 @@ class SchoolContent extends Component {
 
           {acceptanceRequirements}
 
+          {courseStart}
+
           {numberOfGraduates}
+          {graduationRate}
 
           {employmentAssistance}
+          {employmentRate}
 
           {accreditation}
 

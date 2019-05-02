@@ -79,7 +79,7 @@ class SchoolContent extends Component {
     // TODO: Once established, each of the below fields should move into their own components.
 
     let courseLength = "";
-    if ((school.courseLength.length > 0)  && (school.courseLength !== "-")) {
+    if ((school.courseLengthExtended.length > 0)  && (school.courseLengthExtended !== "-")) {
       courseLength =
         <div>
           <div className={classes.heading}>Course Length</div>

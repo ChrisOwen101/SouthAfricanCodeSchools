@@ -3,11 +3,11 @@ import Logo from "./Logo";
 
 import SideBar from "./SideBar";
 
-function AppTitleBar() {
+function AppTitleBar(props) {
   const style = { position: 'relative', left: -20 }
   return (
     <div id="appTitleBar" style={style}>
-      <SideBar />
+      <SideBar toggleLikesClick={props.toggleLikesClick}/>
       <Logo />
     </div>
   );

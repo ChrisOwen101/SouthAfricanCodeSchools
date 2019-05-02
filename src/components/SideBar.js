@@ -53,7 +53,7 @@ class SideBar extends Component {
               <ListItemIcon><SchoolIcon /></ListItemIcon>
               <ListItemText primary="About this Project" />
           </ListItem>
-          <ListItem button key="favourites">
+          <ListItem button key="favourites" onClick={this.props.toggleLikesClick}>
               <ListItemIcon><FavoriteIcon /></ListItemIcon>
               <ListItemText primary="Favourites" />
           </ListItem>

@@ -282,7 +282,7 @@ class SchoolTable extends Component {
     return (
       <div id='tableContainer'>
         <MUIDataTable
-          title={<AppTitleBar/>}
+          title={<AppTitleBar toggleLikesClick={this.toggleShowLiked.bind(this)}/>}
           style={style}
           data={this.state.schools}
           columns={columns}

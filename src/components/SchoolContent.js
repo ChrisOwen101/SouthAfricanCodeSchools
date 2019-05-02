@@ -281,11 +281,6 @@ class SchoolContent extends Component {
           avatar={
             <Avatar aria-label="School Info" src={school.logo} className={classes.avatar} style={{ borderRadius: 0 }}></Avatar>
           }
-          action={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
           title={school.name}
           subheader={yearEstablished}
         />

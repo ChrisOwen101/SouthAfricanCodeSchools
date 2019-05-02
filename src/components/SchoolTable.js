@@ -31,15 +31,6 @@ const columns = [
     }
   },
   {
-    name: "website",
-    label: "Website",
-    options: {
-      filter: false,
-      sort: false,
-      display: "excluded"
-    }
-  },
-  {
     name: "locations",
     label: "Locations",
     options: {
@@ -60,15 +51,6 @@ const columns = [
             return val;
         });
       },
-    }
-  },
-  {
-    name: "free",
-    label: "Free",
-    options: {
-      filter: true,
-      sort: false,
-      display: "excluded"
     }
   },
   {

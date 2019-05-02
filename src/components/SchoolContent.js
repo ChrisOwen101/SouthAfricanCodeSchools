@@ -361,9 +361,7 @@ class SchoolContent extends Component {
         <CardActions className={classes.actions} disableActionSpacing>
           {emailButton}
           <LikeThis likeClick={this.props.likeClick} school={school} />
-          <IconButton aria-label="Share">
-            <ShareIcon />
-          </IconButton>
+          <ShareButton school={school} />
           {/*
           // Requires classnames component. See MUI card demo for sample code.
           <IconButton

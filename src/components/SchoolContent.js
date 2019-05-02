@@ -11,7 +11,6 @@ import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -27,6 +26,7 @@ import EmailIcon from '@material-ui/icons/Email';
 
 // TODO: Move to BusinessType component.
 import BusinessIcon from '@material-ui/icons/Business';
+import LikeThis from "./LikeThis";
 
 function separateAndTrimList(list) {
 
@@ -322,9 +322,7 @@ class SchoolContent extends Component {
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           {emailButton}
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
+          <LikeThis likeClick={this.props.likeClick} school={school} />
           <IconButton aria-label="Share">
             <ShareIcon />
           </IconButton>

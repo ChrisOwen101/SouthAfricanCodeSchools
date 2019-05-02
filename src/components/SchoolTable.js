@@ -7,6 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import Loader from "./Loader";
 import SchoolContent from "./SchoolContent";
 import AppTitleBar from "./AppTitleBar";
+import ToolbarExtra from "./ToolbarExtra";
 
 // Note: When adding new columns, if the column indexes change, then we need to review the "Show Column" hack, see index.css.
 const columns = [
@@ -125,10 +126,73 @@ const columns = [
   },
 ];
 
+
 class SchoolTable extends Component {
   constructor(props) {
     super(props);
-    this.state = { schools: [], isLoading: true };
+    this.state = { schools: [], hiddenSchools: [], isLoading: true };
+  }
+
+  likeClick(school) {
+    // Use localstorage to manage favourites.
+    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    // TODO: switch to unique ID that won't change.
+    // Otherwise school name changes would remove from user favourites.
+    var id = school.name;
+
+    // return if target doesn't have an id (shouldn't happen)
+    if (!id) return;
+
+    let index = favorites.indexOf(id);
+    // It doesn't exist yet, so add it.
+    if (index === -1) {
+      favorites.push(id);
+      // Boolean values don't work in this context, so we use a string instead.
+      school.liked = 'true';
+    } else {
+      // It already exists, so remove it.
+      favorites.splice(index, 1);
+      school.liked = 'false';
+    }
+    // Store array (converted to string) in local storage.
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+
+    this.setState(prevState => {
+      const schools = prevState.schools.map((item, j) => {
+        if (item.name === school.name) {
+          return school;
+        } else {
+          return item;
+        }
+      });
+
+      return {
+        schools,
+      };
+    });
+
+    return;
+  }
+
+  toggleShowLiked() {
+    // When likes are toggled, we hide all other schools in a separate list.
+    // These lists are merged again to show all schools.
+    this.setState(prevState => {
+      if (prevState.hiddenSchools.length === 0) {
+        const schools = prevState.schools.filter((item) => item.liked === "true");
+        const hiddenSchools = prevState.schools.filter((item) => item.liked === "false");
+        return {
+          schools, hiddenSchools
+        };
+      } else {
+        const schools = prevState.schools.concat(prevState.hiddenSchools);
+        const hiddenSchools = [];
+        return {
+          schools, hiddenSchools
+        };
+      }
+    });
   }
 
   componentWillMount() {
@@ -139,11 +203,25 @@ class SchoolTable extends Component {
       .limitToLast(100);
 
     messagesRef.on("value", function(snapshot) {
+      // We have received the data from Firebase.
+      // Now we make any transformations needed before passing to the data table.
+
       let list = [];
+      // Load user favorites from local storage if they exist.
+      var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
       snapshot.forEach(function(school) {
         let schoolRow = school.val()
-        // Cities row is converted from string to array, to allow proper filtering.
+        // Convert cities row from string to array, to allow proper filtering.
         schoolRow.cities = schoolRow.cities.split(",").map(item => item.trim());
+
+        // Apply favourites from localstorage to data.
+        let index = favorites.indexOf(schoolRow.name);
+        if (index === -1) {
+          schoolRow.liked = 'false';
+        } else {
+          schoolRow.liked = 'true';
+        }
         list.push(schoolRow);
       });
 
@@ -173,11 +251,22 @@ class SchoolTable extends Component {
         return (
           <TableRow>
             <TableCell colSpan={colSpan}>
-              <SchoolContent school={this.state.schools[rowMeta.dataIndex]} />
+              <SchoolContent school={this.state.schools[rowMeta.dataIndex]} likeClick={this.likeClick.bind(this)} />
             </TableCell>
           </TableRow>
         );
 
+      },
+      customToolbar: () => {
+        let active = false;
+        // We determine if Like button is active, by looking for items in hiddenSchool list.
+        if (this.state.hiddenSchools.length > 0) {
+          active = true;
+        }
+
+        return (
+          <ToolbarExtra active={active} onClick={this.toggleShowLiked.bind(this)} />
+        );
       },
       setRowProps: (row) => {
         return {

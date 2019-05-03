@@ -11,7 +11,6 @@ import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import ShareIcon from '@material-ui/icons/Share';
 import Tooltip from '@material-ui/core/Tooltip';
 
 // TODO: Move below three resources to Stipend component once defined.
@@ -99,6 +98,18 @@ class SchoolContent extends Component {
           <div className={classes.heading}>Acceptance Requirements</div>
             <Typography component="p" gutterBottom>
               {school.acceptanceRequirements}
+            </Typography>
+        </div>
+        ;
+    }
+
+    let scholarships = "";
+    if (school.scholarships.length > 0) {
+      scholarships =
+        <div>
+          <div className={classes.heading}>Scholarships</div>
+            <Typography component="p" gutterBottom>
+              {school.scholarships}
             </Typography>
         </div>
         ;
@@ -332,6 +343,8 @@ class SchoolContent extends Component {
           {courseLength}
 
           {acceptanceRequirements}
+
+          {scholarships}
 
           {courseStart}
 

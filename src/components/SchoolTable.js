@@ -153,11 +153,9 @@ class SchoolTable extends Component {
 
   likeClick(school) {
     // Use localstorage to manage favourites.
-    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    var favorites = JSON.parse(localStorage.getItem('csd-likes')) || [];
 
-    // TODO: switch to unique ID that won't change.
-    // Otherwise school name changes would remove from user favourites.
-    var id = school.name;
+    var id = school.key;
 
     // return if target doesn't have an id (shouldn't happen)
     if (!id) return;
@@ -174,11 +172,11 @@ class SchoolTable extends Component {
       school.liked = 'false';
     }
     // Store array (converted to string) in local storage.
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem('csd-likes', JSON.stringify(favorites));
 
     this.setState(prevState => {
       const schools = prevState.schools.map((item, j) => {
-        if (item.name === school.name) {
+        if (item.key === school.key) {
           return school;
         } else {
           return item;
@@ -226,7 +224,7 @@ class SchoolTable extends Component {
 
       let list = [];
       // Load user favorites from local storage if they exist.
-      var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      var favorites = JSON.parse(localStorage.getItem('csd-likes')) || [];
 
       snapshot.forEach(function(school) {
         let schoolRow = school.val()
@@ -234,7 +232,7 @@ class SchoolTable extends Component {
         schoolRow.cities = schoolRow.cities.split(",").map(item => item.trim());
 
         // Apply favourites from localstorage to data.
-        let index = favorites.indexOf(schoolRow.name);
+        let index = favorites.indexOf(schoolRow.key);
         if (index === -1) {
           schoolRow.liked = 'false';
         } else {

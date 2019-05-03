@@ -13,6 +13,7 @@
     "react-dom": "^16.8.6",
     "react-ga": "^2.5.7",
     "react-scripts": "2.1.8",
+    "react-web-share-button": "^1.0.1",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {

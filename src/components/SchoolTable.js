@@ -258,7 +258,7 @@ class SchoolTable extends Component {
           noMatch: this.state.isLoading ? (
             <Loader />
           ) : (
-            "Sorry, there is no matching data to display"
+            <strong>No items to show. Try changing the filters you have set.</strong>
           )
         }
       },

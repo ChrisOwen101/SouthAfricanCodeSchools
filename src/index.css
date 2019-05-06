@@ -80,6 +80,13 @@ a:visited {
   margin: 15px 0 5px 0;
 }
 
+/* Name column */
+.schoolRow td:nth-child(3) {
+  white-space: nowrap!important;
+  padding-right: 20px;
+  color: #28660a;
+}
+
 @media screen and (max-width: 959px) {
   #logo img {
     width: 140px!important;

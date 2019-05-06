@@ -251,6 +251,13 @@ class SchoolTable extends Component {
       download: false,
       onCellClick: (cellIndex, rowIndex) => {
         console.log("todo: expand/collapse " + cellIndex, rowIndex);
+
+      },
+      onRowClick: rowData => {
+        // Set the url to the key for this opened school.
+        // TODO: remove instance of magic number.
+        const key = rowData[3];
+        this.props.history.push(key, {});
       },
       textLabels: {
         body: {

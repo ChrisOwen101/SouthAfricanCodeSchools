@@ -8,7 +8,7 @@
     "@material-ui/lab": "^3.0.0-alpha.30",
     "@react-firebase/database": "^0.3.10",
     "firebase": "^5.10.0",
-    "mui-datatables": "git+https://www.github.com:gregnb/mui-datatables.git#4df9ad29",
+    "mui-datatables": "git+https://www.github.com:georgezee/mui-datatables.git#4ff593d",
     "history": "^4.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

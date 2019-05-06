@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import fire from "./firebase";
-import { Link } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
@@ -8,8 +7,11 @@ import Loader from "./Loader";
 import SchoolContent from "./SchoolContent";
 import AppTitleBar from "./AppTitleBar";
 import ToolbarExtra from "./ToolbarExtra";
+import Avatar from '@material-ui/core/Avatar';
 
-// Note: When adding new columns, if the column indexes change, then we need to review the "Show Column" hack, see index.css.
+const logoStyle = { borderRadius: 4, float: 'left', height: '30px', width: '30px', position: 'relative', left: '-15px' }
+
+// Note: When adding new columns, if the column indexes change, then we need to review the "Show Column" hack, see index.css
 const columns = [
   {
     name: "name",
@@ -31,6 +33,24 @@ const columns = [
   {
     name: "website",
     label: "Website",
+    options: {
+      filter: false,
+      sort: false,
+      display: "excluded"
+    }
+  },
+  {
+    name: "logo",
+    label: "Logo",
+    options: {
+      filter: false,
+      sort: false,
+      display: "excluded"
+    }
+  },
+  {
+    name: "key",
+    label: "Key",
     options: {
       filter: false,
       sort: false,

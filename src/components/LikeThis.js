@@ -10,7 +10,7 @@ class LikeThis extends Component {
   render() {
     return (
       <IconButton aria-label="Add to favorites" onClick={ this.onClick.bind(this) } >
-        <FavoriteIcon color={ (this.props.school.liked === 'true') ? "error" : "primary" }/>
+        <FavoriteIcon color={ (this.props.school.liked === 'true') ? "error" : "action" }/>
       </IconButton>
     );
   }

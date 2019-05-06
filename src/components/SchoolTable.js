@@ -247,6 +247,8 @@ class SchoolTable extends Component {
       pagination: false,
       selectableRows: false,
       expandableRows: true,
+      print: false,
+      download: false,
       onCellClick: (cellIndex, rowIndex) => {
         console.log("todo: expand/collapse " + cellIndex, rowIndex);
       },

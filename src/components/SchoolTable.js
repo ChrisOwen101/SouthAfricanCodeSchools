@@ -20,13 +20,10 @@ const columns = [
       sortDirection: "desc",
       customBodyRender: (value, tableMeta, updateValue) => {
         return (
-          <Link
-            href={tableMeta.rowData[1]}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <div style={ {lineHeight: '30px'} }>
+            <Avatar aria-label="School Info" src={tableMeta.rowData[2]} className="avatar" style={logoStyle}></Avatar>
             {value}
-          </Link>
+          </div>
         );
       }
     }

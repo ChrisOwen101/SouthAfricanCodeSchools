@@ -257,6 +257,26 @@ class SchoolContent extends Component {
       ;
     }
 
+    let website = "";
+    if (school.website.length > 0) {
+      website =
+        <div className={classes.heading}>
+          <div>Website</div>
+
+          <Typography component="p" gutterBottom>
+            <Link
+              href={school.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={ {lineHeight: '30px'} }
+            >
+              {school.website}
+            </Link>
+          </Typography>
+        </div>
+      ;
+    }
+
     let emailButton = "";
     if (school.publicEmail.length > 0) {
       emailButton =
@@ -370,6 +390,7 @@ class SchoolContent extends Component {
 
           {businessType}
 
+          {website}
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           {emailButton}

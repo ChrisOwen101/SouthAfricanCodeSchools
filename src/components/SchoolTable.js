@@ -19,7 +19,7 @@ const columns = [
     options: {
       filter: false,
       sort: true,
-      sortDirection: "desc",
+      sortDirection: "asc",
       viewColumns: false,
       customBodyRender: (value, tableMeta, updateValue) => {
         return (

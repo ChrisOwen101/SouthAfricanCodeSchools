@@ -20,6 +20,7 @@ const columns = [
       filter: false,
       sort: true,
       sortDirection: "desc",
+      viewColumns: false,
       customBodyRender: (value, tableMeta, updateValue) => {
         return (
           <div style={ {lineHeight: '30px'} }>
@@ -70,6 +71,7 @@ const columns = [
     name: "cities",
     label: "Locations",
     options: {
+      viewColumns: false,
       filter: true,
       display: false,
       sort: false,
@@ -120,6 +122,7 @@ const columns = [
     name: "accreditationFilter",
     label: "Accreditation",
     options: {
+      viewColumns: false,
       filter: true,
       display: false
     }
@@ -137,6 +140,7 @@ const columns = [
     name: "stipendFilter",
     label: "Stipend",
     options: {
+      viewColumns: false,
       filter: true,
       display: false
     }

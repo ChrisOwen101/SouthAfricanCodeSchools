@@ -45,6 +45,7 @@ class SchoolContent extends Component {
   render() {
     let classes = {};
     classes.card = "cardSchool";
+    classes.cardHeading = "cardHeading";
     classes.avatar = "avatar";
     classes.media = "media";
     classes.chip = "chip";
@@ -348,6 +349,7 @@ class SchoolContent extends Component {
           }
           title={school.name}
           subheader={yearEstablished}
+          className={classes.cardHeading}
         />
         <CardMedia
           className={classes.media}

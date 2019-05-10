@@ -131,6 +131,7 @@ a:visited {
     top: 76%;
     font-weight: bold;
     background-color: #ebfce188;
+    padding-left: 5%!important;
   }
 
   .schoolRow td {
@@ -156,22 +157,41 @@ a:visited {
     flex-basis: 25%;
     font-size: 85%;
     text-transform: lowercase;
+    padding-right: 2px;
   }
 
   /* Right-hand column containing data */
   .schoolRow td:nth-child(odd) {
-    flex-basis: 55%;
-    padding-left: 7%;
+    flex-basis: 63%;
+    padding-left: 2%;
+  }
+
+  /* Hide the Name label */
+  .schoolRow td:nth-child(2) {
+    display: none;
+  }
+  /* Set Name block to be wider */
+  .schoolRow td:nth-child(3) {
+    width: 100%;
+    padding-left: 9%;
+    padding-right: 20%;
+  }
+
+  .schoolRow td:last-child {
+    padding-right: 10px;
   }
 
   #footer {
     flex-direction: column;
   }
 
-
   .aboutClose button {
     padding-top: 10px!important;
     padding-bottom: 10px!important;
+  }
+
+  .cardHeading {
+    padding-bottom: 0!important;
   }
 
 }

@@ -24,7 +24,6 @@ class SchoolPopUp extends Component {
         open={this.props.open}
         aria-labelledby="max-width-dialog-title"
       >
-        <DialogTitle>{this.props.school.name}</DialogTitle>
         <DialogContent>
           <SchoolContent school={this.props.school} />
         </DialogContent>

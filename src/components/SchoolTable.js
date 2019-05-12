@@ -169,7 +169,13 @@ const columns = [
 class SchoolTable extends Component {
   constructor(props) {
     super(props);
-    this.state = { schools: [], hiddenSchools: [], isLoading: true };
+    this.state = {
+      schools: [],
+      hiddenSchools: [],
+      isLoading: true,
+      popUpOpen: false,
+      selectedSchool: {}
+     };
   }
 
   likeClick(school) {
@@ -246,6 +252,7 @@ class SchoolTable extends Component {
       let list = [];
       // Load user favorites from local storage if they exist.
       var favorites = JSON.parse(localStorage.getItem('csd-likes')) || [];
+      let highlightRow = null;
 
       snapshot.forEach(function(school) {
         let schoolRow = school.val()
@@ -259,12 +266,28 @@ class SchoolTable extends Component {
         } else {
           schoolRow.liked = 'true';
         }
+        // If the path matches this school's key, display it as the highlighted item.
+        if (window.location.pathname == "/" + schoolRow.key) {
+          // Add a space in front of the name so it appears as the first item.
+          schoolRow.name = " " + schoolRow.name;
+          highlightRow = schoolRow;
+        }
         list.push(schoolRow);
       });
 
+      if (highlightRow !== null) {
+        this.setState({
+          selectedSchool: highlightRow,
+          popUpOpen: true,
+        });
+      }
       this.setState({ schools: list, isLoading: false });
     }.bind(this));
   }
+
+  onPopUpClose = event => {
+    this.setState({ popUpOpen: false });
+  };
 
   render() {
     const options = {
@@ -328,6 +351,12 @@ class SchoolTable extends Component {
 
     return (
       <div id='tableContainer'>
+        <SchoolPopUp
+          open={this.state.popUpOpen}
+          school={this.state.selectedSchool}
+          onClose={this.onPopUpClose}
+        />
+
         <MUIDataTable
           title={<AppTitleBar toggleLikesClick={this.toggleShowLiked.bind(this)}/>}
           style={style}

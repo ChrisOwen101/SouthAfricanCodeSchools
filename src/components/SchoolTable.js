@@ -325,6 +325,20 @@ class SchoolTable extends Component {
       margin: "16px"
     };
 
+    const
+      data = [
+       {
+        dataIndex: 0,
+        index: 1
+       }
+      ]
+    ;
+    const lookup = {0: true};
+    const expandedRow =  {
+      data,
+      lookup,
+    };
+
     return (
       <div id='tableContainer'>
         <MUIDataTable

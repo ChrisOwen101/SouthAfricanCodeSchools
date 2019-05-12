@@ -81,7 +81,11 @@ class SchoolContent extends Component {
     // TODO: Once established, each of the below fields should move into their own components.
 
     let courseLength = "";
-    if ((school.courseLengthExtended.length > 0)  && (school.courseLengthExtended !== "-")) {
+    if (
+        (school.hasOwnProperty('courseLengthExtended'))
+        && (school.courseLengthExtended.length > 0)
+        && (school.courseLengthExtended !== "-")
+       ) {
       courseLength =
         <div>
           <div className={classes.heading}>Course Length</div>
@@ -93,7 +97,7 @@ class SchoolContent extends Component {
     }
 
     let acceptanceRequirements = "";
-    if (school.acceptanceRequirements.length > 0) {
+    if (school.hasOwnProperty('acceptanceRequirements') && school.acceptanceRequirements.length > 0) {
       acceptanceRequirements =
         <div>
           <div className={classes.heading}>Acceptance Requirements</div>
@@ -105,7 +109,7 @@ class SchoolContent extends Component {
     }
 
     let scholarships = "";
-    if (school.scholarships.length > 0) {
+    if (school.hasOwnProperty('scholarships') && school.scholarships.length > 0) {
       scholarships =
         <div>
           <div className={classes.heading}>Scholarships</div>
@@ -117,7 +121,7 @@ class SchoolContent extends Component {
     }
 
     let numberOfGraduates = "";
-    if (school.numberOfGraduates.toString().length > 0) {
+    if (school.hasOwnProperty('numberOfGraduates') && school.numberOfGraduates.toString().length > 0) {
       numberOfGraduates =
         <div className={classes.heading}>
           <div># Graduates</div>
@@ -129,7 +133,7 @@ class SchoolContent extends Component {
     }
 
     let graduationRate = "";
-    if (school.graduationRate.toString().length > 0) {
+    if (school.hasOwnProperty('graduationRate') && school.graduationRate.toString().length > 0) {
       graduationRate =
         <div className={classes.heading}>
           <div>Graduation Rate</div>
@@ -141,7 +145,7 @@ class SchoolContent extends Component {
     }
 
     let employmentRate = "";
-    if (school.employmentRate.toString().length > 0) {
+    if (school.hasOwnProperty('employmentRate') && school.employmentRate.toString().length > 0) {
       employmentRate =
         <div className={classes.heading}>
           <div>Employment Rate</div>
@@ -153,7 +157,7 @@ class SchoolContent extends Component {
     }
 
     let courseStart = "";
-    if (school.courseStart.length > 0) {
+    if (school.hasOwnProperty('courseStart') && school.courseStart.length > 0) {
       courseStart =
         <div className={classes.heading}>
           <div>When does it start</div>
@@ -165,7 +169,7 @@ class SchoolContent extends Component {
     }
 
     let employmentAssistance = "";
-    if (school.employmentAssistance.length > 0) {
+    if (school.hasOwnProperty('employmentAssistance') && school.employmentAssistance.length > 0) {
       employmentAssistance =
         <div className={classes.heading}>
           <div>Employment Assistance</div>
@@ -178,7 +182,7 @@ class SchoolContent extends Component {
     }
 
     let accreditation = "";
-    if (school.accreditation.length > 0) {
+    if (school.hasOwnProperty('accreditation') && school.accreditation.length > 0) {
       accreditation =
         <div className={classes.heading}>
           <div>Accreditation</div>
@@ -191,7 +195,7 @@ class SchoolContent extends Component {
     }
 
     let industryPartners = "";
-    if (school.industryPartners.length > 0) {
+    if (school.hasOwnProperty('industryPartners') && school.industryPartners.length > 0) {
       industryPartners =
         <div className={classes.heading}>
           <Tooltip placement="top-start" title="Partners may provide additional opportunities for jobs and internships.">
@@ -206,7 +210,7 @@ class SchoolContent extends Component {
     }
 
     let successInfo = "";
-    if (school.successInfo.length > 0) {
+    if (school.hasOwnProperty('successInfo') && school.successInfo.length > 0) {
       successInfo =
         <div className={classes.heading}>
           <div>Successes</div>
@@ -259,7 +263,7 @@ class SchoolContent extends Component {
     }
 
     let website = "";
-    if (school.website.length > 0) {
+    if (school.hasOwnProperty('website') && school.website.length > 0) {
       website =
         <div className={classes.heading}>
           <div>Website</div>
@@ -279,7 +283,7 @@ class SchoolContent extends Component {
     }
 
     let emailButton = "";
-    if (school.publicEmail.length > 0) {
+    if (school.hasOwnProperty('publicEmail') && school.publicEmail.length > 0) {
       emailButton =
         <Link href={"mailto:" + school.publicEmail}>
           <IconButton aria-label="Send Email">
@@ -291,7 +295,7 @@ class SchoolContent extends Component {
 
     let stipend = "";
     // Don't show anything if value empty or unknown ("-").
-    if ((school.stipend.length > 0) && (school.stipend !== "-")) {
+    if (school.hasOwnProperty('stipend') && (school.stipend.length > 0) && (school.stipend !== "-")) {
       let stipendIcon = null;
       let stipendLabel = "Stipend";
       if (school.stipend.toLowerCase() === 'yes') {
@@ -317,7 +321,7 @@ class SchoolContent extends Component {
 
     let businessType = "";
     // Don't show anything if value empty or unknown ("-").
-    if ((school.businessType.length > 0) && (school.businessType !== "-")) {
+    if (school.hasOwnProperty('businessType') && (school.businessType.length > 0) && (school.businessType !== "-")) {
       businessType =
         <Chip
           icon={ <BusinessIcon /> }
@@ -331,7 +335,7 @@ class SchoolContent extends Component {
 
 
     let yearEstablished = "";
-    if (school.yearEstablished.toString().length > 0) {
+    if (school.hasOwnProperty('yearEstablished') && school.yearEstablished.toString().length > 0) {
       yearEstablished = "since " + school.yearEstablished;
     }
 

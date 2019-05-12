@@ -267,7 +267,7 @@ class SchoolTable extends Component {
           schoolRow.liked = 'true';
         }
         // If the path matches this school's key, display it as the highlighted item.
-        if (window.location.pathname == "/" + schoolRow.key) {
+        if (window.location.pathname === "/" + schoolRow.key) {
           // Add a space in front of the name so it appears as the first item.
           schoolRow.name = " " + schoolRow.name;
           highlightRow = schoolRow;

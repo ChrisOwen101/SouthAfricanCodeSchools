@@ -271,6 +271,7 @@ class SchoolTable extends Component {
       pagination: false,
       selectableRows: false,
       expandableRows: true,
+      fullRowTrigger: true,
       print: false,
       download: false,
       onCellClick: (cellIndex, rowIndex) => {

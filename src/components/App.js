@@ -24,7 +24,6 @@ if (process.env.REACT_APP_ANALYTICS_KEY) {
 // Use history to assign urls to specific app states.
 const history = createBrowserHistory();
 // Set the current location to the homepage.
-history.push('/', { some: 'state' });
 
 const App = () => (
   <MuiThemeProvider theme={muiTheme}>

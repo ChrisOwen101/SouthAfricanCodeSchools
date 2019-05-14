@@ -8,6 +8,7 @@ import SchoolContent from "./SchoolContent";
 import AppTitleBar from "./AppTitleBar";
 import ToolbarExtra from "./ToolbarExtra";
 import Avatar from '@material-ui/core/Avatar';
+import SchoolPopUp from "./SchoolPopUp";
 
 const logoStyle = { borderRadius: 4, float: 'left', height: '30px', width: '30px', position: 'relative', left: '-15px' }
 
@@ -305,7 +306,7 @@ class SchoolTable extends Component {
         // Set the url to the key for this opened school.
         // TODO: remove instance of magic number.
         const key = rowData[3];
-        this.props.history.push(key, {});
+        this.props.history.push(key, {schoolSelected: key});
       },
       textLabels: {
         body: {

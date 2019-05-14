@@ -8,5 +8,6 @@ install:
   - npm install -g firebase-tools
   - npm update
   - npm run build
+  - npm run sitemap-generate
 after_success:
   - firebase deploy --token $FIREBASE_KEY

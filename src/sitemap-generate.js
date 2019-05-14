@@ -13,7 +13,7 @@ function generateSitemap(params) {
   return (
     new Sitemap(router)
       .applyParams(params)
-      .build("https://www.codeschooldirectory.co.za")
+      .build("https://codeschooldirectory.co.za")
       .save("./public/sitemap.xml")
   )
 }

@@ -27,7 +27,7 @@ class LikeThis extends Component {
             fallbackContainerOnShowStyles={ fallbackStyle }
             title={this.props.school.name}
             text={this.props.school.name}
-            url={"https://www.codeschooldirectory.com/" + this.props.school.name}
+            url={"https://codeschooldirectory.co.za/" + this.props.school.key}
         />
         );
     }

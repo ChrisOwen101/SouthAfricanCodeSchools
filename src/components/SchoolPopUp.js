@@ -4,6 +4,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import SchoolContent from "./SchoolContent";
+import withMobileDialog from '@material-ui/core/withMobileDialog';
 
 class SchoolPopUp extends Component {
   state = {
@@ -16,10 +17,13 @@ class SchoolPopUp extends Component {
   };
 
   render() {
+    const { fullScreen } = this.props;
+
     return (
       <Dialog
         fullWidth={this.state.fullWidth}
         maxWidth={this.state.maxWidth}
+        fullScreen={fullScreen}
         open={this.props.open}
         aria-labelledby="max-width-dialog-title"
       >
@@ -36,4 +40,4 @@ class SchoolPopUp extends Component {
   }
 }
 
-export default SchoolPopUp;
+export default withMobileDialog()(SchoolPopUp);

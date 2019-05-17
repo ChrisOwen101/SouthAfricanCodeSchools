@@ -80,6 +80,23 @@ class SchoolContent extends Component {
 
     // TODO: Once established, each of the below fields should move into their own components.
 
+
+    let cost = "";
+    if (
+        (school.hasOwnProperty('cost'))
+        && (school.cost.length > 0)
+        && (school.cost !== "-")
+       ) {
+      cost =
+        <div>
+          <div className={classes.heading}>Cost</div>
+            <Typography component="p" gutterBottom>
+              {school.cost}
+            </Typography>
+        </div>
+        ;
+    }
+
     let courseLength = "";
     if (
         (school.hasOwnProperty('courseLengthExtended'))
@@ -365,6 +382,8 @@ class SchoolContent extends Component {
           <Typography component="p" gutterBottom>
             {school.additionalInfo}
           </Typography>
+
+          {cost}
 
           {courseLength}
 

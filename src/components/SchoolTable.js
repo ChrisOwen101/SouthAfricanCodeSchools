@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import fire from "./firebase";
 import MUIDataTable from "mui-datatables";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
 import Loader from "./Loader";
-import SchoolContent from "./SchoolContent";
+import ExpandedRow from "./ExpandedRow";
 import AppTitleBar from "./AppTitleBar";
 import ToolbarExtra from "./ToolbarExtra";
 import Avatar from '@material-ui/core/Avatar';
@@ -177,6 +175,7 @@ class SchoolTable extends Component {
       popUpOpen: false,
       selectedSchool: {}
      };
+     this.child = {};
   }
 
   likeClick(school) {
@@ -274,7 +273,8 @@ class SchoolTable extends Component {
           highlightRow = schoolRow;
         }
         list.push(schoolRow);
-      });
+        this.child[schoolRow.key] = React.createRef();
+      }.bind(this));
 
       if (highlightRow !== null) {
         this.setState({
@@ -283,6 +283,7 @@ class SchoolTable extends Component {
         });
       }
       this.setState({ schools: list, isLoading: false });
+
     }.bind(this));
   }
 
@@ -307,7 +308,9 @@ class SchoolTable extends Component {
         // TODO: remove instance of magic number.
         const key = rowData[3];
         this.props.history.push(key, {schoolSelected: key});
-      },
+        console.log("kkkey:" + key)
+        this.child[key].current.scrollToMyRef();
+      }.bind(this),
       textLabels: {
         body: {
           noMatch: this.state.isLoading ? (
@@ -320,11 +323,12 @@ class SchoolTable extends Component {
       renderExpandableRow: (rowData, rowMeta) => {
         const colSpan = rowData.length + 1;
         return (
-          <TableRow>
-            <TableCell colSpan={colSpan}>
-              <SchoolContent school={this.state.schools[rowMeta.dataIndex]} likeClick={this.likeClick.bind(this)} />
-            </TableCell>
-          </TableRow>
+          <ExpandedRow
+            ref={this.child[this.state.schools[rowMeta.dataIndex].key]}
+            colSpan={colSpan}
+            school={this.state.schools[rowMeta.dataIndex]}
+            likeClick={this.likeClick.bind(this)}
+          />
         );
 
       },

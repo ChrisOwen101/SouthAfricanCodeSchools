@@ -22,11 +22,12 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Link } from "@material-ui/core";
 import EmailIcon from '@material-ui/icons/Email';
 
-// TODO: Move to BusinessType component.
-import BusinessIcon from '@material-ui/icons/Business';
 import LikeThis from "./LikeThis";
 
 import ShareButton from "./ShareButton";
+
+import BusinessType from "./fields/BusinessType";
+import Website from "./fields/Website";
 
 function separateAndTrimList(list) {
 
@@ -279,26 +280,6 @@ class SchoolContent extends Component {
       ;
     }
 
-    let website = "";
-    if (school.hasOwnProperty('website') && school.website.length > 0) {
-      website =
-        <div className={classes.heading}>
-          <div>Website</div>
-
-          <Typography component="p" gutterBottom>
-            <Link
-              href={school.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={ {lineHeight: '30px'} }
-            >
-              {school.website}
-            </Link>
-          </Typography>
-        </div>
-      ;
-    }
-
     let emailButton = "";
     if (school.hasOwnProperty('publicEmail') && school.publicEmail.length > 0) {
       emailButton =
@@ -339,17 +320,13 @@ class SchoolContent extends Component {
     let businessType = "";
     // Don't show anything if value empty or unknown ("-").
     if (school.hasOwnProperty('businessType') && (school.businessType.length > 0) && (school.businessType !== "-")) {
-      businessType =
-        <Chip
-          icon={ <BusinessIcon /> }
-          label={school.businessType}
-          className={classes.chip}
-          color="primary"
-          style={chipStyleBase}
-        />
-      ;
+      businessType = <BusinessType school={school} classes={classes} style={chipStyleBase}/>
     }
 
+    let website = "";
+    if (school.hasOwnProperty('website') && school.website.length > 0) {
+      website = <Website school={school} classes={classes}/>
+    }
 
     let yearEstablished = "";
     if (school.hasOwnProperty('yearEstablished') && school.yearEstablished.toString().length > 0) {
@@ -416,6 +393,7 @@ class SchoolContent extends Component {
           {businessType}
 
           {website}
+
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           {emailButton}

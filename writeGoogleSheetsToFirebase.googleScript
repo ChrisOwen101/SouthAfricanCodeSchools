@@ -6,9 +6,15 @@ function writeDataToFirebase() {
 
   for(var i = 2; i < data.length; i++) {
     var programName = data[i][0];
+    var programKey = data[i][1];
 
     // Stop processing at the end marker.
     if (programName == "end") {
+      break;
+    }
+
+    // Ignore row if no key is present.
+    if (programKey == "") {
       break;
     }
 

@@ -1,10 +1,10 @@
 import React from "react";
 import Typography from '@material-ui/core/Typography';
 
-const EmploymentRate = props => {
+const BasicField = props => {
   return (
-    <div className="heading">
-      <div>Employment Rate</div>
+    <div>
+      <div className="heading">{props.heading}</div>
       <Typography component="p" gutterBottom>
         {props.value}
       </Typography>
@@ -12,4 +12,4 @@ const EmploymentRate = props => {
   );
 };
 
-export default EmploymentRate;
+export default BasicField;

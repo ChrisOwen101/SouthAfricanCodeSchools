@@ -17,8 +17,8 @@ import LikeThis from "./LikeThis";
 
 import ShareButton from "./ShareButton";
 
-import GraduationRate from "./fields/GraduationRate";
-import EmploymentRate from "./fields/EmploymentRate";
+
+import BasicField from "./fields/BasicField";
 import Email from "./fields/Email";
 import Stipend from "./fields/Stipend";
 import BusinessType from "./fields/BusinessType";
@@ -83,14 +83,7 @@ class SchoolContent extends Component {
         && (school.cost.length > 0)
         && (school.cost !== "-")
        ) {
-      cost =
-        <div>
-          <div className={classes.heading}>Cost</div>
-            <Typography component="p" gutterBottom>
-              {school.cost}
-            </Typography>
-        </div>
-        ;
+      cost = <BasicField value={school.cost} heading="Cost" />
     }
 
     let courseLength = "";
@@ -99,26 +92,12 @@ class SchoolContent extends Component {
         && (school.courseLengthExtended.length > 0)
         && (school.courseLengthExtended !== "-")
        ) {
-      courseLength =
-        <div>
-          <div className={classes.heading}>Course Length</div>
-            <Typography component="p" gutterBottom>
-              {school.courseLengthExtended}
-            </Typography>
-        </div>
-        ;
+      courseLength = <BasicField value={school.courseLengthExtended} heading="Course Length" />
     }
 
     let acceptanceRequirements = "";
     if (school.hasOwnProperty('acceptanceRequirements') && school.acceptanceRequirements.length > 0) {
-      acceptanceRequirements =
-        <div>
-          <div className={classes.heading}>Acceptance Requirements</div>
-            <Typography component="p" gutterBottom>
-              {school.acceptanceRequirements}
-            </Typography>
-        </div>
-        ;
+      acceptanceRequirements = <BasicField value={school.acceptanceRequirements} heading="Acceptance Requirements" />
     }
 
     let scholarships = "";
@@ -147,12 +126,12 @@ class SchoolContent extends Component {
 
     let graduationRate = "";
     if (school.hasOwnProperty('graduationRate') && school.graduationRate.toString().length > 0) {
-      graduationRate = <GraduationRate value={school.graduationRate} />
+      graduationRate = <BasicField value={school.graduationRate} heading="Graduation Rate" />
     }
 
     let employmentRate = "";
     if (school.hasOwnProperty('employmentRate') && school.employmentRate.toString().length > 0) {
-      employmentRate = <EmploymentRate value={school.employmentRate} />
+      employmentRate = <BasicField value={school.employmentRate} heading="Employment Rate" />
     }
 
     let courseStart = "";

@@ -9,14 +9,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
-
 import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
 
 import LikeThis from "./LikeThis";
-
 import ShareButton from "./ShareButton";
-
 
 import BasicField from "./fields/BasicField";
 import Email from "./fields/Email";
@@ -74,9 +70,6 @@ class SchoolContent extends Component {
       color: theme.palette.secondary.contrastText
     };
 
-    // TODO: Once established, each of the below fields should move into their own components.
-
-
     let cost = "";
     if (
         (school.hasOwnProperty('cost'))
@@ -102,26 +95,12 @@ class SchoolContent extends Component {
 
     let scholarships = "";
     if (school.hasOwnProperty('scholarships') && school.scholarships.length > 0) {
-      scholarships =
-        <div>
-          <div className={classes.heading}>Scholarships</div>
-            <Typography component="p" gutterBottom>
-              {school.scholarships}
-            </Typography>
-        </div>
-        ;
+      scholarships = <BasicField value={school.scholarships} heading="Scholarships" />
     }
 
     let numberOfGraduates = "";
     if (school.hasOwnProperty('numberOfGraduates') && school.numberOfGraduates.toString().length > 0) {
-      numberOfGraduates =
-        <div className={classes.heading}>
-          <div># Graduates</div>
-          <Typography component="p" gutterBottom>
-            {school.numberOfGraduates}
-          </Typography>
-        </div>
-      ;
+      numberOfGraduates = <BasicField value={school.numberOfGraduates} heading="# Graduates" />
     }
 
     let graduationRate = "";
@@ -136,67 +115,31 @@ class SchoolContent extends Component {
 
     let courseStart = "";
     if (school.hasOwnProperty('courseStart') && school.courseStart.length > 0) {
-      courseStart =
-        <div className={classes.heading}>
-          <div>When does it start</div>
-          <Typography component="p" gutterBottom>
-            {school.courseStart}
-          </Typography>
-        </div>
-      ;
+      courseStart = <BasicField value={school.courseStart} heading="When does it start" />
     }
 
     let employmentAssistance = "";
     if (school.hasOwnProperty('employmentAssistance') && school.employmentAssistance.length > 0) {
-      employmentAssistance =
-        <div className={classes.heading}>
-          <div>Employment Assistance</div>
-
-          <Typography component="p" gutterBottom>
-            {school.employmentAssistance}
-          </Typography>
-        </div>
-      ;
+      employmentAssistance = <BasicField value={school.employmentAssistance} heading="Employment Assistance" />
     }
 
     let accreditation = "";
     if (school.hasOwnProperty('accreditation') && school.accreditation.length > 0) {
-      accreditation =
-        <div className={classes.heading}>
-          <div>Accreditation</div>
-
-          <Typography component="p" gutterBottom>
-            {school.accreditation}
-          </Typography>
-        </div>
-      ;
+      accreditation = <BasicField value={school.accreditation} heading="Accreditation" />
     }
 
     let industryPartners = "";
     if (school.hasOwnProperty('industryPartners') && school.industryPartners.length > 0) {
-      industryPartners =
-        <div className={classes.heading}>
-          <Tooltip placement="top-start" title="Partners may provide additional opportunities for jobs and internships.">
-            <div>Industry Partners</div>
-          </Tooltip>
-
-        <Typography component="p" gutterBottom>
-          {school.industryPartners}
-        </Typography>
-        </div>
-      ;
+      industryPartners = <BasicField
+                          value={school.industryPartners}
+                          heading="Industry Partners"
+                          tooltip="Partners may provide additional opportunities for jobs and internships."
+                        />
     }
 
     let successInfo = "";
     if (school.hasOwnProperty('successInfo') && school.successInfo.length > 0) {
-      successInfo =
-        <div className={classes.heading}>
-          <div>Successes</div>
-          <Typography component="p" gutterBottom>
-            {school.successInfo}
-          </Typography>
-        </div>
-      ;
+      successInfo = <BasicField value={school.successInfo} heading="Successes" />
     }
 
     let locations = "";

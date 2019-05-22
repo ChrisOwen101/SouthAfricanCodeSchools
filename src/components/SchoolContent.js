@@ -144,31 +144,21 @@ class SchoolContent extends Component {
 
     let locations = "";
     if (locationsList.length > 0) {
-      locations =
-      <div>
-        <div className={classes.heading}>Locations</div>
-          <div>
-            {locationsList.map((item, index) => {
-              return (
-                <Chip
-                  key={item}
-                  label={item}
-                  style={chipStylePrimary}
-                />
-              );
-            })}
-          </div>
-      </div>
-      ;
+      let locationItems = locationsList.map((item, index) => {
+        return (
+          <Chip
+            key={item}
+            label={item}
+            style={chipStylePrimary}
+          />
+        );
+      });
+      locations = <BasicField value={locationItems} heading="Locations" />
     }
 
     let technologies = "";
     if (technologiesList.length > 0) {
-      technologies =
-      <div>
-        <div className={classes.heading}>Technologies</div>
-        <div>
-          {technologiesList.map((item, index) => {
+      let techItems = technologiesList.map((item, index) => {
             return (
               <Chip
                 key={item}
@@ -177,10 +167,8 @@ class SchoolContent extends Component {
                 onClick={() => sendToLearningMaterial(item)}
               />
             );
-          })}
-        </div>
-      </div>
-      ;
+          });
+      technologies = <BasicField value={techItems} heading="Technologies" />
     }
 
     let emailButton = "";

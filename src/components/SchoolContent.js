@@ -9,23 +9,18 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
+
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
-
-// TODO: Move below three resources to Stipend component once defined.
-import MoneyIcon from '@material-ui/icons/AttachMoney';
-import CheckIcon from '@material-ui/icons/Check';
-import CloseIcon from '@material-ui/icons/Close';
-
-// TODO: Move to EmailButton component.
-import { Link } from "@material-ui/core";
-import EmailIcon from '@material-ui/icons/Email';
 
 import LikeThis from "./LikeThis";
 
 import ShareButton from "./ShareButton";
 
+import GraduationRate from "./fields/GraduationRate";
+import EmploymentRate from "./fields/EmploymentRate";
+import Email from "./fields/Email";
+import Stipend from "./fields/Stipend";
 import BusinessType from "./fields/BusinessType";
 import Website from "./fields/Website";
 
@@ -152,26 +147,12 @@ class SchoolContent extends Component {
 
     let graduationRate = "";
     if (school.hasOwnProperty('graduationRate') && school.graduationRate.toString().length > 0) {
-      graduationRate =
-        <div className={classes.heading}>
-          <div>Graduation Rate</div>
-          <Typography component="p" gutterBottom>
-            {school.graduationRate}
-          </Typography>
-        </div>
-      ;
+      graduationRate = <GraduationRate value={school.graduationRate} />
     }
 
     let employmentRate = "";
     if (school.hasOwnProperty('employmentRate') && school.employmentRate.toString().length > 0) {
-      employmentRate =
-        <div className={classes.heading}>
-          <div>Employment Rate</div>
-          <Typography component="p" gutterBottom>
-            {school.employmentRate}
-          </Typography>
-        </div>
-      ;
+      employmentRate = <EmploymentRate value={school.employmentRate} />
     }
 
     let courseStart = "";
@@ -282,50 +263,24 @@ class SchoolContent extends Component {
 
     let emailButton = "";
     if (school.hasOwnProperty('publicEmail') && school.publicEmail.length > 0) {
-      emailButton =
-        <Link href={"mailto:" + school.publicEmail}>
-          <IconButton aria-label="Send Email">
-            <EmailIcon />
-          </IconButton>
-        </Link>
-      ;
+      emailButton = <Email value={school.publicEmail}/>
     }
 
     let stipend = "";
     // Don't show anything if value empty or unknown ("-").
     if (school.hasOwnProperty('stipend') && (school.stipend.length > 0) && (school.stipend !== "-")) {
-      let stipendIcon = null;
-      let stipendLabel = "Stipend";
-      if (school.stipend.toLowerCase() === 'yes') {
-        stipendIcon = <CheckIcon />;
-      } else if (school.stipend.toLowerCase() === 'no') {
-        stipendLabel = "No Stipend";
-        stipendIcon = <CloseIcon />;
-      } else {
-        // If text has been entered instead of yes/no, then display the text.
-        stipendLabel += ": " + school.stipend;
-        stipendIcon = <MoneyIcon />;
-      }
-      stipend =
-        <Chip
-          icon={stipendIcon}
-          label={stipendLabel}
-          className={classes.chip}
-          color="primary"
-          style={chipStyleBase}
-        />
-      ;
+      stipend = <Stipend value={school.stipend} classes={classes} style={chipStyleBase}/>
     }
 
     let businessType = "";
     // Don't show anything if value empty or unknown ("-").
     if (school.hasOwnProperty('businessType') && (school.businessType.length > 0) && (school.businessType !== "-")) {
-      businessType = <BusinessType school={school} classes={classes} style={chipStyleBase}/>
+      businessType = <BusinessType value={school.businessType} classes={classes} style={chipStyleBase}/>
     }
 
     let website = "";
     if (school.hasOwnProperty('website') && school.website.length > 0) {
-      website = <Website school={school} classes={classes}/>
+      website = <Website url={school.website} />
     }
 
     let yearEstablished = "";

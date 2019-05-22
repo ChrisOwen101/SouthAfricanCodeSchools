@@ -4,17 +4,17 @@ import Typography from '@material-ui/core/Typography';
 
 const Website = props => {
   return (
-    <div className={props.classes.heading}>
+    <div className="heading">
       <div>Website</div>
 
       <Typography component="p" gutterBottom>
         <Link
-          href={props.school.website}
+          href={props.url}
           target="_blank"
           rel="noopener noreferrer"
           style={ {lineHeight: '30px'} }
         >
-          {props.school.website}
+          {props.url}
         </Link>
       </Typography>
     </div>

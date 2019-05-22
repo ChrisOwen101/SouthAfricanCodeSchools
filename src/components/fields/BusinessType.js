@@ -6,7 +6,7 @@ const BusinessType = props => {
   return (
       <Chip
         icon={ <BusinessIcon /> }
-        label={props.school.businessType}
+        label={props.value}
         className={props.classes.chip}
         color="primary"
         style={props.style}

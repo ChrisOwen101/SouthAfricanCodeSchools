@@ -89,7 +89,11 @@ class SchoolContent extends Component {
         && (school.courseLengthExtended.length > 0)
         && (school.courseLengthExtended !== "-")
        ) {
-      courseLength = <BasicField value={school.courseLengthExtended} heading="Course Length" />
+      courseLength = <BasicField
+                      value={school.courseLengthExtended}
+                      heading="Course Length"
+                      tooltip="The length of courses may depend on factors such as full time/part time, program scope, internships and work experience."
+                    />
     }
 
     let acceptanceRequirements = "";
@@ -129,7 +133,11 @@ class SchoolContent extends Component {
 
     let accreditation = "";
     if (school.hasOwnProperty('accreditation') && school.accreditation.length > 0) {
-      accreditation = <BasicField value={school.accreditation} heading="Accreditation" />
+      accreditation = <BasicField
+                        value={school.accreditation}
+                        heading="Accreditation"
+                        tooltip="Accredited courses have to meet particular standards and are recognized by official bodies."
+                      />
     }
 
     let industryPartners = "";

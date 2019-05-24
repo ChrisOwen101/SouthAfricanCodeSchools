@@ -235,6 +235,7 @@ class SchoolContent extends Component {
           title={school.name}
           subheader={yearEstablished}
           className={classes.cardHeading}
+          style={{ paddingBottom: '3px' }}
         />
         <CardMedia
           className={classes.media}

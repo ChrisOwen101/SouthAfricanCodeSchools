@@ -15,6 +15,7 @@ import LikeThis from "./LikeThis";
 import ShareButton from "./ShareButton";
 
 import BasicField from "./fields/BasicField";
+import ChipList from "./fields/ChipList";
 import Email from "./fields/Email";
 import Stipend from "./fields/Stipend";
 import BusinessType from "./fields/BusinessType";
@@ -167,7 +168,7 @@ class SchoolContent extends Component {
           />
         );
       });
-      locations = <BasicField value={locationItems} heading="Locations" />
+      locations = <ChipList value={locationItems} heading="Locations" />
     }
 
     let technologies = "";
@@ -182,7 +183,7 @@ class SchoolContent extends Component {
               />
             );
           });
-      technologies = <BasicField value={techItems} heading="Technologies" />
+      technologies = <ChipList value={techItems} heading="Technologies" />
     }
 
     let emailButton = "";

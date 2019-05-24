@@ -21,6 +21,7 @@ import Stipend from "./fields/Stipend";
 import BusinessType from "./fields/BusinessType";
 import Website from "./fields/Website";
 import MetaTags from 'react-meta-tags';
+import ReactGA from 'react-ga';
 
 function separateAndTrimList(list) {
 
@@ -37,20 +38,34 @@ function separateAndTrimList(list) {
 
 class SchoolContent extends Component {
   render() {
-    let classes = {};
-    classes.card = "cardSchool";
-    classes.cardHeading = "cardHeading";
-    classes.avatar = "avatar";
-    classes.media = "media";
-    classes.chip = "chip";
-    classes.actions = "actions";
-    classes.heading = "heading";
-    let school = this.props.school;
+
+    let classes = {
+      card : "cardSchool",
+      cardHeading : "cardHeading",
+      avatar : "avatar",
+      media : "media",
+      chip : "chip",
+      actions : "actions",
+      heading : "heading",
+    };
     let theme = this.props.theme;
-
-
+    let school = this.props.school;
     let technologiesList = separateAndTrimList(school.technologies);
     let locationsList = separateAndTrimList(school.locations);
+
+    // If the user hasn't viewed this school before, then count as an impression.
+    // i.e. each user can only generate a single page impression for any school.
+    var viewed = JSON.parse(localStorage.getItem('csd-views')) || [];
+    const key = school.key;
+    let index = viewed.indexOf(key);
+    if (index === -1) {
+      // Track impression.
+      ReactGA.pageview('/' + key);
+      // Mark as viewed.
+      viewed.push(key);
+      localStorage.setItem('csd-views', JSON.stringify(viewed));
+      console.log('first view: ' + key)
+    }
 
     const cardStyle = {
       boxShadow: "none"

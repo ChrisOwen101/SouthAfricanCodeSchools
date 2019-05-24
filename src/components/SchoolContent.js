@@ -19,6 +19,7 @@ import Email from "./fields/Email";
 import Stipend from "./fields/Stipend";
 import BusinessType from "./fields/BusinessType";
 import Website from "./fields/Website";
+import MetaTags from 'react-meta-tags';
 
 function separateAndTrimList(list) {
 
@@ -69,6 +70,9 @@ class SchoolContent extends Component {
       backgroundColor: theme.palette.secondary.light,
       color: theme.palette.secondary.contrastText
     };
+
+    // Trim the name, as it may have had spaces added for sorting.
+    school.name = school.name.trim();
 
     let cost = "";
     if (
@@ -143,7 +147,9 @@ class SchoolContent extends Component {
     }
 
     let locations = "";
+    let locationString = "";
     if (locationsList.length > 0) {
+      locationString = locationsList.join(", ");
       let locationItems = locationsList.map((item, index) => {
         return (
           <Chip
@@ -203,8 +209,24 @@ class SchoolContent extends Component {
       otherHeading = <div className={classes.heading}>Other info</div>;
     }
 
+    // Set the Metatag / title to match the current school being rendered.
+    let metaTitle = school.name + " overview and comparison";
+    let metaDescription = "Compare " + school.name + " with other code schools in South Africa. ";
+    if (locationString.length > 0) {
+      metaDescription += ", locations: " + locationString;
+    }
+    metaDescription += ", cost: " + school.cost;
+
     return (
       <div>
+
+        <MetaTags>
+          <title>{metaTitle}</title>
+          <meta name="description" content={metaDescription} />
+          <meta property="og:title" content={metaTitle} />
+          <meta property="og:image" content={school.logo} />
+        </MetaTags>
+
         <Card className={classes.card} style={cardStyle}>
         <CardHeader
           avatar={

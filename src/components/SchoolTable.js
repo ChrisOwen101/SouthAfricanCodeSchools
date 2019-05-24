@@ -9,6 +9,7 @@ import AppTitleBar from "./AppTitleBar";
 import ToolbarExtra from "./ToolbarExtra";
 import Avatar from '@material-ui/core/Avatar';
 import SchoolPopUp from "./SchoolPopUp";
+import ReactGA from 'react-ga';
 
 const logoStyle = { borderRadius: 4, float: 'left', height: '30px', width: '30px', position: 'relative', left: '-15px' }
 
@@ -307,6 +308,18 @@ class SchoolTable extends Component {
         // TODO: remove instance of magic number.
         const key = rowData[3];
         this.props.history.push(key, {schoolSelected: key});
+
+        // If the user hasn't viewed this school before, then count as an impression.
+        // i.e. each user can only generate a single page impression for any school.
+        var viewed = JSON.parse(localStorage.getItem('csd-views')) || [];
+        let index = viewed.indexOf(key);
+        if (index === -1) {
+          // Track impression.
+          ReactGA.pageview('/' + key);
+          // Mark as viewed.
+          viewed.push(key);
+          localStorage.setItem('csd-views', JSON.stringify(viewed));
+        }
       },
       textLabels: {
         body: {

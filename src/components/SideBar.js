@@ -11,8 +11,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import MailIcon from '@material-ui/icons/Mail';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import SchoolIcon from '@material-ui/icons/School';
+import GuideIcon from '@material-ui/icons/LocalLibrary';
 import Logo from "./Logo";
 import AboutPage from "./AboutPage";
+import GuidePage from "./GuidePage";
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -25,6 +27,7 @@ class SideBar extends Component {
     bottom: false,
     right: false,
     aboutOpen: false,
+    guideOpen: false,
   };
 
   toggleDrawer = (side, open) => () => {
@@ -36,6 +39,12 @@ class SideBar extends Component {
   toggleAbout = (open) => () => {
     this.setState({
       aboutOpen: open,
+    });
+  };
+
+  toggleGuide = (open) => () => {
+    this.setState({
+      guideOpen: open,
     });
   };
 
@@ -56,6 +65,10 @@ class SideBar extends Component {
           <ListItem button key="favourites" onClick={this.props.toggleLikesClick}>
               <ListItemIcon><FavoriteIcon /></ListItemIcon>
               <ListItemText primary="Favourites" />
+          </ListItem>
+          <ListItem button key="guide" onClick={this.toggleGuide(true)}>
+              <ListItemIcon><GuideIcon /></ListItemIcon>
+              <ListItemText primary="Student Guide" />
           </ListItem>
           <Link href="https://github.com/ChrisOwen101/SouthAfricanCodeSchools">
             <ListItem button key="github">
@@ -102,6 +115,7 @@ class SideBar extends Component {
           </div>
         </Drawer>
         <AboutPage open={this.state.aboutOpen} handleClose={this.toggleAbout(false)} />
+        <GuidePage open={this.state.guideOpen} handleClose={this.toggleGuide(false)} />
       </div>
     );
   }

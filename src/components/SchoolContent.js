@@ -156,6 +156,13 @@ class SchoolContent extends Component {
                       />
     }
 
+    let accreditationExtended = "";
+    if (school.hasOwnProperty('accreditationExtended') && school.accreditationExtended.length > 0) {
+      accreditationExtended = <BasicField
+                        value={school.accreditationExtended}
+                      />
+    }
+
     let industryPartners = "";
     if (school.hasOwnProperty('industryPartners') && school.industryPartners.length > 0) {
       industryPartners = <BasicField
@@ -289,6 +296,7 @@ class SchoolContent extends Component {
           {employmentRate}
 
           {accreditation}
+          {accreditationExtended}
 
           {industryPartners}
 

@@ -36,7 +36,7 @@ The site should automatically open in your browser at: https://localhost:3000
 
 ## Deploying to live site
 
-### Automatic
+### Automatic (preferred)
 [Travis CI](https://travis-ci.org/) is setup to automatically deploy on every commit or merge to Master. All warnings are treated as errors so the build will fail if you do not resolve all warnings before pushing.
 
 ### Manual
@@ -46,6 +46,7 @@ To build:
 ```
 npm run build
 ```
+Then deploy to Firebase:
 ```
 firebase deploy
 ```

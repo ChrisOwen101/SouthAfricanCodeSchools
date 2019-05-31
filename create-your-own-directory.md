@@ -1,6 +1,6 @@
 # Creating your own school directory
 
-Want to setup your own local directory. We'd love to help you do it. Contact George Ziady (george@ codeschooldirectory.co.za) for help walking through the below steps.
+Want to setup your own local directory? We'd love to help you do it. Contact [George Ziady] (https://github.com/georgezee) for assistance with any of the steps below.
 
 ## Technologies used
 - *Google Sheets*: Contains both the data source, as well as the task management.

@@ -260,6 +260,10 @@ class SchoolTable extends Component {
         // Convert cities row from string to array, to allow proper filtering.
         schoolRow.cities = schoolRow.cities.split(",").map(item => item.trim());
 
+        //Parse line breaks in certain fields.
+        schoolRow.additionalInfo = schoolRow.additionalInfo.split ('\n').map ((item, i) => <div>{item}<br/></div>);
+        schoolRow.employmentAssistance = schoolRow.employmentAssistance.split ('\n').map ((item, i) => <div>{item}<br/></div>);
+
         // Apply favourites from localstorage to data.
         let index = favorites.indexOf(schoolRow.key);
         if (index === -1) {

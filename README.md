@@ -1,8 +1,8 @@
 # South African Code Schools
 
-This project lists known programs available in South Africa that teach coding.
+This project lists known programs available in South Africa that teach coding. Our goal is to help aspiring students match with available and relevant courses.
 
-This is a [Codebridge](https://codebridge.org.za/) community website. All organisation is conducted on the [ZATech](https://zatech.github.io/) slack workspace on the channel [#codeschooldirectory](https://zatech.slack.com/messages/CGT76NYK1/). Join and say hi!
+This is a [Codebridge](https://codebridge.org.za/) community website. All organisation is conducted on the [ZATech](https://zatech.github.io/) slack workspace on the channel [#codeschooldirectory](https://zatech.slack.com/messages/CGT76NYK1/), where all are welcome.
 
 ## Live Website
 
@@ -12,34 +12,40 @@ The data is stored in this Google Sheets: https://docs.google.com/spreadsheets/d
 
 All data is pushed from the Google Sheet to a Firebase Realtime Database on every change. The changes are reflected on the website within 1-2 seconds.
 
+Interested in starting your own directory? [Read more here](create-your-own-directory.md).
+
 ## How to run
 
-First pull the repository:
-
+1. Clone the repository:
 ```
-git pull https://github.com/ChrisOwen101/SouthAfricanCodeSchools.git
+git clone https://github.com/ChrisOwen101/SouthAfricanCodeSchools.git
 ```
-
-Run:
-
+2. Change into the cloned folder
 ```
-npm update && npm start
+cd SouthAfricanCodeSchools
 ```
+3. Download all the project dependencies (will take a while):
+```
+npm update
+```
+4. Run the app:
+```
+npm start
+```
+The site should automatically open in your browser at: https://localhost:3000
 
-## How to deploy
+## Deploying to live site
 
+### Automatic
 [Travis CI](https://travis-ci.org/) is setup to automatically deploy on every commit or merge to Master. All warnings are treated as errors so the build will fail if you do not resolve all warnings before pushing.
 
-## How to deploy locally
+### Manual
 
 To build:
 
 ```
 npm run build
 ```
-
-To deploy (you'll need the keys for Firebase. Not sure on the best way to manage this yet)
-
 ```
 firebase deploy
 ```
@@ -52,4 +58,4 @@ There are three environment files included:
 Notes:
 - Changes to an .env file will need an app restart to take effect.
 - You can use: `git update-index --skip-worktree .env` to ignore changes to your local env file.
-- These files are only for publicly shareable keys and variables, don't put sensitive data here.
+- We use these files only for publicly shareable keys and variables, don't put sensitive data here.

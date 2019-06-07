@@ -1,31 +1,31 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
+import Paper from "@material-ui/core/Paper";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import SchoolContent from "./SchoolContent";
-import withMobileDialog from '@material-ui/core/withMobileDialog';
 
 class SchoolPopUp extends Component {
-  state = {
-    fullWidth: true,
-    maxWidth: "sm"
-  };
+  state = {};
 
   handleClose = event => {
     this.props.onClose();
   };
 
   render() {
-    const { fullScreen } = this.props;
+    let openStyle = {
+      display: "none"
+    };
+
+    if (this.props.open) {
+      openStyle = {
+        display: "block"
+      };
+    }
 
     return (
-      <Dialog
-        fullWidth={this.state.fullWidth}
-        maxWidth={this.state.maxWidth}
-        fullScreen={fullScreen}
-        open={this.props.open}
-        aria-labelledby="max-width-dialog-title"
+      <Paper
+        style={openStyle}
       >
         <DialogContent>
           <SchoolContent school={this.props.school} />
@@ -35,9 +35,9 @@ class SchoolPopUp extends Component {
             Close
           </Button>
         </DialogActions>
-      </Dialog>
+      </Paper>
     );
   }
 }
 
-export default withMobileDialog()(SchoolPopUp);
+export default SchoolPopUp;

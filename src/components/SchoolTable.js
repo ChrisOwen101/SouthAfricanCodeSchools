@@ -261,8 +261,12 @@ class SchoolTable extends Component {
         schoolRow.cities = schoolRow.cities.split(",").map(item => item.trim());
 
         //Parse line breaks in certain fields.
-        schoolRow.additionalInfo = schoolRow.additionalInfo.split ('\n').map ((item, i) => <div>{item}<br/></div>);
-        schoolRow.employmentAssistance = schoolRow.employmentAssistance.split ('\n').map ((item, i) => <div>{item}<br/></div>);
+        if (schoolRow.additionalInfo.length > 0) {
+          schoolRow.additionalInfo = schoolRow.additionalInfo.split('\n').map((item, i) => <div>{item}<br/></div>);
+        }
+        if (schoolRow.employmentAssistance.length > 0) {
+          schoolRow.employmentAssistance = schoolRow.employmentAssistance.split('\n').map((item, i) => <div>{item}<br/></div>);
+        }
 
         // Apply favourites from localstorage to data.
         let index = favorites.indexOf(schoolRow.key);

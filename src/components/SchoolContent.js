@@ -16,6 +16,7 @@ import LikeThis from "./LikeThis";
 import ShareButton from "./ShareButton";
 
 import BasicField from "./fields/BasicField";
+import FieldHeading from "./fields/FieldHeading";
 import ChipList from "./fields/ChipList";
 import Email from "./fields/Email";
 import Stipend from "./fields/Stipend";
@@ -246,7 +247,7 @@ class SchoolContent extends Component {
 
     let otherHeading = "";
     if ((stipend.toString().length > 0) || (businessType.toString().length > 0)) {
-      otherHeading = <div className={classes.heading}>Other info</div>;
+      otherHeading = <FieldHeading heading="Other info" />;
     }
 
     // Set the Metatag / title to match the current school being rendered.
@@ -256,6 +257,8 @@ class SchoolContent extends Component {
       metaDescription += ", locations: " + locationString;
     }
     metaDescription += ", cost: " + school.cost;
+
+    const schoolTitle = <Typography component="h1" variant="subtitle1" style={{fontWeight: 'bold'}}>{school.name}</Typography>
 
     return (
       <div>
@@ -272,7 +275,7 @@ class SchoolContent extends Component {
           avatar={
             <Avatar aria-label="School Info" src={school.logo} className={classes.avatar} style={{ borderRadius: 0 }}></Avatar>
           }
-          title={school.name}
+          title={schoolTitle}
           subheader={yearEstablished}
           className={classes.cardHeading}
           style={{ paddingBottom: '3px' }}

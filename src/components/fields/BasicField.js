@@ -1,17 +1,18 @@
 import React from "react";
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
+import FieldHeading from "./FieldHeading";
 
 const BasicField = props => {
   let heading = "";
   if (props.tooltip) {
-    heading = <div className="heading">
+    heading = <div>
                 <Tooltip placement="top-start" title={props.tooltip}>
-                  <div>{props.heading}</div>
+                  <FieldHeading heading={props.heading} />
                 </Tooltip>
               </div>
   } else {
-    heading = <div className="heading">{props.heading}</div>
+    heading = <FieldHeading heading={props.heading} />
   }
 
   return (

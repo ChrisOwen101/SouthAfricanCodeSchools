@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
+import FieldHeading from "./FieldHeading";
 
 const Website = props => {
   return (
-    <div className="heading">
-      <div>Website</div>
+    <div>
+      <FieldHeading heading="Website" />
 
       <Typography component="p" gutterBottom>
         <Link

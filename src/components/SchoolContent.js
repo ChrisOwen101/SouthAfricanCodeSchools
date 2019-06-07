@@ -10,6 +10,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import LikeThis from "./LikeThis";
 import ShareButton from "./ShareButton";
@@ -50,6 +51,14 @@ class SchoolContent extends Component {
     };
     let theme = this.props.theme;
     let school = this.props.school;
+    // Check if school object is empty, i.e. object still loading.
+    if (Object.keys(school).length === 0 && school.constructor === Object) {
+      return (
+        <div>
+          <LinearProgress color="secondary" />
+        </div>
+      );
+    }
     let technologiesList = separateAndTrimList(school.technologies);
     let locationsList = separateAndTrimList(school.locations);
 

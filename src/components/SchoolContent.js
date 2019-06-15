@@ -261,7 +261,7 @@ class SchoolContent extends Component {
     const schoolTitle = <Typography component="h1" variant="subtitle1" style={{fontWeight: 'bold'}}>{school.name}</Typography>
 
     return (
-      <div>
+      <div id={this.props.schoolKey}>
 
         <MetaTags>
           <title>{metaTitle}</title>

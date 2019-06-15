@@ -33,7 +33,7 @@ class SchoolPopUp extends Component {
         style={openStyle}
       >
         <DialogContent>
-          <SchoolContent school={this.props.school} />
+          <SchoolContent school={this.props.school} schoolKey="top"/>
         </DialogContent>
         <Button
           variant="contained"

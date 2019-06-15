@@ -4,7 +4,7 @@ import MUIDataTable from "mui-datatables";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import Loader from "./Loader";
-import SchoolContent from "./SchoolContent";
+import ExpandableRow from "./ExpandableRow";
 import AppTitleBar from "./AppTitleBar";
 import ToolbarExtra from "./ToolbarExtra";
 import Avatar from '@material-ui/core/Avatar';
@@ -262,10 +262,10 @@ class SchoolTable extends Component {
 
         //Parse line breaks in certain fields.
         if (schoolRow.additionalInfo.length > 0) {
-          schoolRow.additionalInfo = schoolRow.additionalInfo.split('\n').map((item, i) => <div>{item}<br/></div>);
+          schoolRow.additionalInfo = schoolRow.additionalInfo.split('\n').map((item, i) => <span key={i}>{item}<br/></span>);
         }
         if (schoolRow.employmentAssistance.length > 0) {
-          schoolRow.employmentAssistance = schoolRow.employmentAssistance.split('\n').map((item, i) => <div>{item}<br/></div>);
+          schoolRow.employmentAssistance = schoolRow.employmentAssistance.split('\n').map((item, i) => <span key={i}>{item}<br/></span>);
         }
 
         // Apply favourites from localstorage to data.
@@ -330,7 +330,7 @@ class SchoolTable extends Component {
         return (
           <TableRow>
             <TableCell colSpan={colSpan}>
-              <SchoolContent school={this.state.schools[rowMeta.dataIndex]} likeClick={this.likeClick.bind(this)} />
+              <ExpandableRow school={this.state.schools[rowMeta.dataIndex]} likeClick={this.likeClick.bind(this)} />
             </TableCell>
           </TableRow>
         );

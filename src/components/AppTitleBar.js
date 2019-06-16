@@ -7,7 +7,7 @@ function AppTitleBar(props) {
   const style = { position: 'relative', left: -20 }
   return (
     <div id="appTitleBar" style={style}>
-      <SideBar toggleLikesClick={props.toggleLikesClick}/>
+      <SideBar showLikesStatus={props.showLikesStatus} toggleLikesClick={props.toggleLikesClick}/>
       <Logo />
     </div>
   );

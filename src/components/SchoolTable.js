@@ -175,6 +175,7 @@ class SchoolTable extends Component {
       hiddenSchools: [],
       isLoading: true,
       popUpOpen: false,
+      showLiked: false,
       selectedSchool: {}
      };
   }
@@ -226,14 +227,16 @@ class SchoolTable extends Component {
       if (prevState.hiddenSchools.length === 0) {
         const schools = prevState.schools.filter((item) => item.liked === "true");
         const hiddenSchools = prevState.schools.filter((item) => item.liked === "false");
+        const showLiked = true;
         return {
-          schools, hiddenSchools
+          schools, hiddenSchools, showLiked
         };
       } else {
         const schools = prevState.schools.concat(prevState.hiddenSchools);
         const hiddenSchools = [];
+        const showLiked = false;
         return {
-          schools, hiddenSchools
+          schools, hiddenSchools, showLiked
         };
       }
     });
@@ -337,14 +340,8 @@ class SchoolTable extends Component {
 
       },
       customToolbar: () => {
-        let active = false;
-        // We determine if Like button is active, by looking for items in hiddenSchool list.
-        if (this.state.hiddenSchools.length > 0) {
-          active = true;
-        }
-
         return (
-          <ToolbarExtra active={active} onClick={this.toggleShowLiked.bind(this)} />
+          <ToolbarExtra active={this.state.showLiked} onClick={this.toggleShowLiked.bind(this)} />
         );
       },
       setRowProps: (row) => {
@@ -367,7 +364,7 @@ class SchoolTable extends Component {
         />
 
         <MUIDataTable
-          title={<AppTitleBar toggleLikesClick={this.toggleShowLiked.bind(this)}/>}
+          title={<AppTitleBar toggleLikesClick={this.toggleShowLiked.bind(this)} showLikesStatus={this.state.showLiked}/>}
           style={style}
           data={this.state.schools}
           columns={columns}

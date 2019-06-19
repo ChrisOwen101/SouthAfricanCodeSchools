@@ -46,6 +46,7 @@ class SideBar extends Component {
     };
 
     const favouritesLabel = (this.props.showLikesStatus === true) ?  "Show all Schools" : "Show Favourites";
+    const favouritesBg = (this.props.showLikesStatus === true) ?  "#c1fda2" : "#F5F5F5";
 
     const sideList = (
       <div id="menuList" className={classes.list}>
@@ -55,7 +56,7 @@ class SideBar extends Component {
               <ListItemIcon><SchoolIcon /></ListItemIcon>
               <ListItemText primary="About this Project" />
           </ListItem>
-          <ListItem button key="favourites" onClick={this.props.toggleLikesClick}>
+          <ListItem button key="favourites" onClick={this.props.toggleLikesClick} style={{background: favouritesBg}}>
               <ListItemIcon><FavoriteIcon /></ListItemIcon>
               <ListItemText primary={favouritesLabel} />
           </ListItem>

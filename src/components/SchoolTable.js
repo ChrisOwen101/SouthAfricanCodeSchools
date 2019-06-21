@@ -304,7 +304,7 @@ class SchoolTable extends Component {
   render() {
     const options = {
       pagination: false,
-      selectableRows: false,
+      selectableRows: 'none',
       expandableRows: true,
       expandableRowsOnClick: true,
       print: false,

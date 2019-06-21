@@ -88,6 +88,15 @@ a:visited {
   color: #28660a;
 }
 
+.buttonHighlight {
+  background-color: transparent!important;
+}
+
+.buttonDefault {
+  /* Partially transparent version of primary light palette colour */
+  background-color: #58943a2c!important;
+}
+
 @media screen and (max-width: 959px) {
   #logo img {
     width: 140px!important;

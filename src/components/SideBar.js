@@ -45,8 +45,7 @@ class SideBar extends Component {
       list: "list"
     };
 
-    const favouritesLabel = (this.props.showLikesStatus === true) ?  "Show all Schools" : "Show Favourites";
-    const favouritesBg = (this.props.showLikesStatus === true) ?  "#c1fda2" : "#F5F5F5";
+    const buttonClass = (this.props.showLikesStatus === true) ?  "buttonDefault" : "buttonHighlight";
 
     const sideList = (
       <div id="menuList" className={classes.list}>
@@ -56,9 +55,9 @@ class SideBar extends Component {
               <ListItemIcon><SchoolIcon /></ListItemIcon>
               <ListItemText primary="About this Project" />
           </ListItem>
-          <ListItem button key="favourites" onClick={this.props.toggleLikesClick} style={{background: favouritesBg}}>
+          <ListItem button key="favourites" onClick={this.props.toggleLikesClick} className={buttonClass}>
               <ListItemIcon><FavoriteIcon /></ListItemIcon>
-              <ListItemText primary={favouritesLabel} />
+              <ListItemText primary="Show Favourites" />
           </ListItem>
           <Link href="https://github.com/ChrisOwen101/SouthAfricanCodeSchools">
             <ListItem button key="github">

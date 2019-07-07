@@ -197,6 +197,7 @@ class SchoolContent extends Component {
             key={item}
             label={item}
             style={chipStylePrimary}
+            property='place'
           />
         );
       });
@@ -220,7 +221,7 @@ class SchoolContent extends Component {
 
     let emailButton = "";
     if (school.hasOwnProperty('publicEmail') && school.publicEmail.length > 0) {
-      emailButton = <Email value={school.publicEmail}/>
+      emailButton = <Email value={school.publicEmail} />
     }
 
     let stipend = "";
@@ -242,7 +243,7 @@ class SchoolContent extends Component {
 
     let yearEstablished = "";
     if (school.hasOwnProperty('yearEstablished') && school.yearEstablished.toString().length > 0) {
-      yearEstablished = "since " + school.yearEstablished;
+      yearEstablished = <div>since <span property='foundingDate'>{school.yearEstablished}</span></div> ;
     }
 
     let otherHeading = "";
@@ -258,10 +259,10 @@ class SchoolContent extends Component {
     }
     metaDescription += ", cost: " + school.cost;
 
-    const schoolTitle = <Typography component="h1" variant="subtitle1" style={{fontWeight: 'bold'}}>{school.name}</Typography>
+    const schoolTitle = <Typography component="h1" variant="subtitle1" property="name" style={{fontWeight: 'bold'}}>{school.name}</Typography>
 
     return (
-      <div id={this.props.schoolKey}>
+      <div id={this.props.schoolKey} vocab="http://schema.org/" typeof="School">
 
         <MetaTags>
           <title>{metaTitle}</title>

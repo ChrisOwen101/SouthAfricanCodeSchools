@@ -14,6 +14,7 @@ const Website = props => {
           target="_blank"
           rel="noopener noreferrer"
           style={ {lineHeight: '30px'} }
+          property="url"
         >
           {props.url}
         </Link>

@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 const Email = props => {
   return (
-    <Link href={"mailto:" + props.value}>
+    <Link href={"mailto:" + props.value} property="email">
       <IconButton aria-label="Send Email">
         <EmailIcon />
       </IconButton>

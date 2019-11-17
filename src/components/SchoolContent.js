@@ -267,6 +267,7 @@ class SchoolContent extends Component {
         <MetaTags>
           <title>{metaTitle}</title>
           <meta name="description" content={metaDescription} />
+          <meta property="og:description" content={metaDescription} />
           <meta property="og:title" content={metaTitle} />
           <meta property="og:image" content={school.logo} />
         </MetaTags>
